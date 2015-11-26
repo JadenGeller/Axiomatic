@@ -34,7 +34,7 @@ public class Binding<Value: Equatable> {
     }
 }
 
-class Variable<Value: Equatable> {
+public class Variable<Value: Equatable> {
     private var binding: Binding<Value> {
         willSet {
             binding.variables.remove(self)
@@ -44,27 +44,27 @@ class Variable<Value: Equatable> {
         }
     }
     
-    func snapshot() -> Binding<Value> {
+    public func snapshot() -> Binding<Value> {
         return binding
     }
-    func revert(toSnapshot snapshot: Binding<Value>) {
+    public func revert(toSnapshot snapshot: Binding<Value>) {
         self.binding = snapshot
     }
     
-    init() {
+    public init() {
         binding = Binding()
         binding.variables.insert(self)
     }
     
-    var value: Value? {
+    public var value: Value? {
         return binding.value
     }
     
-    static func bind(variables: [Variable]) throws {
+    internal static func bind(variables: [Variable]) throws {
         try Binding.merge(variables.map { $0.binding })
     }
     
-    func resolve(literalValue: Value) throws {
+    internal func resolve(literalValue: Value) throws {
         if value == nil {
             try Binding.merge([binding, Binding(value: literalValue)])
         }
@@ -73,11 +73,12 @@ class Variable<Value: Equatable> {
         }
     }
 }
+
 extension Variable: Hashable {
-    var hashValue: Int {
+    public var hashValue: Int {
         return ObjectIdentifier(self).hashValue
     }
 }
-func ==<Value>(lhs: Variable<Value>, rhs: Variable<Value>) -> Bool {
+public func ==<Value>(lhs: Variable<Value>, rhs: Variable<Value>) -> Bool {
     return lhs === rhs
 }
