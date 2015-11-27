@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D8549A71C06D54700DECE50 /* Unity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85499C1C06D54600DECE50 /* Unity.framework */; };
-		4D8549AC1C06D54700DECE50 /* SimpleUnificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549AB1C06D54700DECE50 /* SimpleUnificationTests.swift */; };
-		4D8549B71C06D55D00DECE50 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549B61C06D55D00DECE50 /* Variable.swift */; };
+		4D8549A71C06D54700DECE50 /* Axiomatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85499C1C06D54600DECE50 /* Axiomatic.framework */; };
+		4D8549B71C06D55D00DECE50 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549B61C06D55D00DECE50 /* Binding.swift */; };
 		4D8549B91C06D59400DECE50 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549B81C06D59400DECE50 /* Error.swift */; };
-		4D8549BB1C06D5D100DECE50 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549BA1C06D5D100DECE50 /* Value.swift */; };
+		4D8549BB1C06D5D100DECE50 /* Unifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549BA1C06D5D100DECE50 /* Unifiable.swift */; };
 		4D8549BD1C06D95400DECE50 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549BC1C06D95400DECE50 /* Predicate.swift */; };
 		4D8549C11C06E16600DECE50 /* Clause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549C01C06E16600DECE50 /* Clause.swift */; };
 		4D8549C31C06F47400DECE50 /* NestedUnificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549C21C06F47400DECE50 /* NestedUnificationTests.swift */; };
+		4D8549C51C07E2FE00DECE50 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549C41C07E2FE00DECE50 /* System.swift */; };
+		4D89D63F1C07E57A00EFF6D5 /* SimpleUnificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8549AB1C06D54700DECE50 /* SimpleUnificationTests.swift */; };
+		4D89D6411C0807A900EFF6D5 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D89D6401C0807A900EFF6D5 /* Value.swift */; };
+		4D89D6431C0811E700EFF6D5 /* LogicSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D89D6421C0811E700EFF6D5 /* LogicSystemTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,17 +31,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D85499C1C06D54600DECE50 /* Unity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Unity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D85499C1C06D54600DECE50 /* Axiomatic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Axiomatic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8549A11C06D54600DECE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D8549A61C06D54700DECE50 /* UnityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D8549A61C06D54700DECE50 /* AxiomaticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AxiomaticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8549AB1C06D54700DECE50 /* SimpleUnificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUnificationTests.swift; sourceTree = "<group>"; };
 		4D8549AD1C06D54700DECE50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D8549B61C06D55D00DECE50 /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Variable.swift; path = ../Variable.swift; sourceTree = "<group>"; };
+		4D8549B61C06D55D00DECE50 /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Binding.swift; path = ../Binding.swift; sourceTree = "<group>"; };
 		4D8549B81C06D59400DECE50 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = ../Error.swift; sourceTree = "<group>"; };
-		4D8549BA1C06D5D100DECE50 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		4D8549BA1C06D5D100DECE50 /* Unifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unifiable.swift; sourceTree = "<group>"; };
 		4D8549BC1C06D95400DECE50 /* Predicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
 		4D8549C01C06E16600DECE50 /* Clause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clause.swift; sourceTree = "<group>"; };
 		4D8549C21C06F47400DECE50 /* NestedUnificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedUnificationTests.swift; sourceTree = "<group>"; };
+		4D8549C41C07E2FE00DECE50 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		4D89D6401C0807A900EFF6D5 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		4D89D6421C0811E700EFF6D5 /* LogicSystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogicSystemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D8549A71C06D54700DECE50 /* Unity.framework in Frameworks */,
+				4D8549A71C06D54700DECE50 /* Axiomatic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +69,8 @@
 		4D8549921C06D54600DECE50 = {
 			isa = PBXGroup;
 			children = (
-				4D85499E1C06D54600DECE50 /* Unity */,
-				4D8549AA1C06D54700DECE50 /* UnityTests */,
+				4D85499E1C06D54600DECE50 /* Axiomatic */,
+				4D8549AA1C06D54700DECE50 /* AxiomaticTests */,
 				4D85499D1C06D54600DECE50 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,32 +78,37 @@
 		4D85499D1C06D54600DECE50 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D85499C1C06D54600DECE50 /* Unity.framework */,
-				4D8549A61C06D54700DECE50 /* UnityTests.xctest */,
+				4D85499C1C06D54600DECE50 /* Axiomatic.framework */,
+				4D8549A61C06D54700DECE50 /* AxiomaticTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4D85499E1C06D54600DECE50 /* Unity */ = {
+		4D85499E1C06D54600DECE50 /* Axiomatic */ = {
 			isa = PBXGroup;
 			children = (
 				4D8549A11C06D54600DECE50 /* Info.plist */,
 				4D8549B81C06D59400DECE50 /* Error.swift */,
-				4D8549B61C06D55D00DECE50 /* Variable.swift */,
-				4D8549BA1C06D5D100DECE50 /* Value.swift */,
+				4D8549B61C06D55D00DECE50 /* Binding.swift */,
+				4D8549BA1C06D5D100DECE50 /* Unifiable.swift */,
 				4D8549BC1C06D95400DECE50 /* Predicate.swift */,
+				4D89D6401C0807A900EFF6D5 /* Value.swift */,
 				4D8549C01C06E16600DECE50 /* Clause.swift */,
+				4D8549C41C07E2FE00DECE50 /* System.swift */,
 			);
+			name = Axiomatic;
 			path = Unity;
 			sourceTree = "<group>";
 		};
-		4D8549AA1C06D54700DECE50 /* UnityTests */ = {
+		4D8549AA1C06D54700DECE50 /* AxiomaticTests */ = {
 			isa = PBXGroup;
 			children = (
 				4D8549AB1C06D54700DECE50 /* SimpleUnificationTests.swift */,
 				4D8549C21C06F47400DECE50 /* NestedUnificationTests.swift */,
+				4D89D6421C0811E700EFF6D5 /* LogicSystemTests.swift */,
 				4D8549AD1C06D54700DECE50 /* Info.plist */,
 			);
+			name = AxiomaticTests;
 			path = UnityTests;
 			sourceTree = "<group>";
 		};
@@ -114,9 +125,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4D85499B1C06D54600DECE50 /* Unity */ = {
+		4D85499B1C06D54600DECE50 /* Axiomatic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D8549B01C06D54700DECE50 /* Build configuration list for PBXNativeTarget "Unity" */;
+			buildConfigurationList = 4D8549B01C06D54700DECE50 /* Build configuration list for PBXNativeTarget "Axiomatic" */;
 			buildPhases = (
 				4D8549971C06D54600DECE50 /* Sources */,
 				4D8549981C06D54600DECE50 /* Frameworks */,
@@ -127,14 +138,14 @@
 			);
 			dependencies = (
 			);
-			name = Unity;
+			name = Axiomatic;
 			productName = Unity;
-			productReference = 4D85499C1C06D54600DECE50 /* Unity.framework */;
+			productReference = 4D85499C1C06D54600DECE50 /* Axiomatic.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4D8549A51C06D54700DECE50 /* UnityTests */ = {
+		4D8549A51C06D54700DECE50 /* AxiomaticTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D8549B31C06D54700DECE50 /* Build configuration list for PBXNativeTarget "UnityTests" */;
+			buildConfigurationList = 4D8549B31C06D54700DECE50 /* Build configuration list for PBXNativeTarget "AxiomaticTests" */;
 			buildPhases = (
 				4D8549A21C06D54700DECE50 /* Sources */,
 				4D8549A31C06D54700DECE50 /* Frameworks */,
@@ -145,9 +156,9 @@
 			dependencies = (
 				4D8549A91C06D54700DECE50 /* PBXTargetDependency */,
 			);
-			name = UnityTests;
+			name = AxiomaticTests;
 			productName = UnityTests;
-			productReference = 4D8549A61C06D54700DECE50 /* UnityTests.xctest */;
+			productReference = 4D8549A61C06D54700DECE50 /* AxiomaticTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -168,7 +179,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4D8549961C06D54600DECE50 /* Build configuration list for PBXProject "Unity" */;
+			buildConfigurationList = 4D8549961C06D54600DECE50 /* Build configuration list for PBXProject "Axiomatic" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -180,8 +191,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4D85499B1C06D54600DECE50 /* Unity */,
-				4D8549A51C06D54700DECE50 /* UnityTests */,
+				4D85499B1C06D54600DECE50 /* Axiomatic */,
+				4D8549A51C06D54700DECE50 /* AxiomaticTests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,11 +219,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D8549C51C07E2FE00DECE50 /* System.swift in Sources */,
 				4D8549B91C06D59400DECE50 /* Error.swift in Sources */,
+				4D89D6411C0807A900EFF6D5 /* Value.swift in Sources */,
 				4D8549BD1C06D95400DECE50 /* Predicate.swift in Sources */,
-				4D8549BB1C06D5D100DECE50 /* Value.swift in Sources */,
+				4D8549BB1C06D5D100DECE50 /* Unifiable.swift in Sources */,
 				4D8549C11C06E16600DECE50 /* Clause.swift in Sources */,
-				4D8549B71C06D55D00DECE50 /* Variable.swift in Sources */,
+				4D8549B71C06D55D00DECE50 /* Binding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,8 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D8549AC1C06D54700DECE50 /* SimpleUnificationTests.swift in Sources */,
 				4D8549C31C06F47400DECE50 /* NestedUnificationTests.swift in Sources */,
+				4D89D63F1C07E57A00EFF6D5 /* SimpleUnificationTests.swift in Sources */,
+				4D89D6431C0811E700EFF6D5 /* LogicSystemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +244,7 @@
 /* Begin PBXTargetDependency section */
 		4D8549A91C06D54700DECE50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4D85499B1C06D54600DECE50 /* Unity */;
+			target = 4D85499B1C06D54600DECE50 /* Axiomatic */;
 			targetProxy = 4D8549A81C06D54700DECE50 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -335,8 +349,8 @@
 				INFOPLIST_FILE = Unity/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JadenGeller.Unity;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JadenGeller.Axiomatic;
+				PRODUCT_NAME = Axiomatic;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -355,8 +369,8 @@
 				INFOPLIST_FILE = Unity/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JadenGeller.Unity;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JadenGeller.Axiomatic;
+				PRODUCT_NAME = Axiomatic;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -368,7 +382,7 @@
 				INFOPLIST_FILE = UnityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JadenGeller.UnityTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AxiomaticTests;
 			};
 			name = Debug;
 		};
@@ -379,14 +393,14 @@
 				INFOPLIST_FILE = UnityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JadenGeller.UnityTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AxiomaticTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4D8549961C06D54600DECE50 /* Build configuration list for PBXProject "Unity" */ = {
+		4D8549961C06D54600DECE50 /* Build configuration list for PBXProject "Axiomatic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D8549AE1C06D54700DECE50 /* Debug */,
@@ -395,21 +409,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D8549B01C06D54700DECE50 /* Build configuration list for PBXNativeTarget "Unity" */ = {
+		4D8549B01C06D54700DECE50 /* Build configuration list for PBXNativeTarget "Axiomatic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D8549B11C06D54700DECE50 /* Debug */,
 				4D8549B21C06D54700DECE50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		4D8549B31C06D54700DECE50 /* Build configuration list for PBXNativeTarget "UnityTests" */ = {
+		4D8549B31C06D54700DECE50 /* Build configuration list for PBXNativeTarget "AxiomaticTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D8549B41C06D54700DECE50 /* Debug */,
 				4D8549B51C06D54700DECE50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

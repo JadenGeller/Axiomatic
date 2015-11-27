@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4D85499B1C06D54600DECE50"
-               BuildableName = "Unity.framework"
-               BlueprintName = "Unity"
-               ReferencedContainer = "container:Unity.xcodeproj">
+               BuildableName = "Logical.framework"
+               BlueprintName = "Axiomatic"
+               ReferencedContainer = "container:Axiomatic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4D8549A51C06D54700DECE50"
-               BuildableName = "UnityTests.xctest"
-               BlueprintName = "UnityTests"
-               ReferencedContainer = "container:Unity.xcodeproj">
+               BuildableName = "Axiomatic.xctest"
+               BlueprintName = "AxiomaticTests"
+               ReferencedContainer = "container:Axiomatic.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4D85499B1C06D54600DECE50"
-            BuildableName = "Unity.framework"
-            BlueprintName = "Unity"
-            ReferencedContainer = "container:Unity.xcodeproj">
+            BuildableName = "Logical.framework"
+            BlueprintName = "Axiomatic"
+            ReferencedContainer = "container:Axiomatic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4D85499B1C06D54600DECE50"
-            BuildableName = "Unity.framework"
-            BlueprintName = "Unity"
-            ReferencedContainer = "container:Unity.xcodeproj">
+            BuildableName = "Logical.framework"
+            BlueprintName = "Axiomatic"
+            ReferencedContainer = "container:Axiomatic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4D85499B1C06D54600DECE50"
-            BuildableName = "Unity.framework"
-            BlueprintName = "Unity"
-            ReferencedContainer = "container:Unity.xcodeproj">
+            BuildableName = "Logical.framework"
+            BlueprintName = "Axiomatic"
+            ReferencedContainer = "container:Axiomatic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
