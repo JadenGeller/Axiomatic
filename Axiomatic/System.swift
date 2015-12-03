@@ -14,13 +14,18 @@ public class System<Operator: Equatable, Argument: Equatable> {
     }
     
     public func query(goal: Predicate<Operator, Argument>) throws {
+        // WE WANT TO USE A CLEAN SYSTEM OF EVERY LOOP IN THE FOR LOOP SO WE CAN REUSE RULES
         for clause in clauses where clause.functor == goal.functor && clause.arity == goal.arity {
             do {
                 switch clause {
                 case .Fact(let predicate):
                     return try goal.unify(predicate)
-                case .Rule:
-                    fatalError("Not implemented")
+                case .Rule(let predicate, let dependencies):
+                    try goal.unify(predicate)
+                    
+                    // NOTE; WE NEED TO MAKE A CLEAN COPY OF OUR SYSTEM FOR EACH RECURSE
+                    // BC WE MIGHT WANT TO REUSE A RULE THAT HAS ALREADY BEEN UNIFIED TO
+                    try dependencies.forEach(goal.unify)
                 }
             }
             catch {

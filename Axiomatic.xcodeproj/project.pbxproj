@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D576C9D1C081F66002CA7F8 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D576C9C1C081F66002CA7F8 /* Snapshot.swift */; };
 		4D8549A71C06D54700DECE50 /* Axiomatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D85499C1C06D54600DECE50 /* Axiomatic.framework */; };
 		4D89D64C1C08198200EFF6D5 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D89D6441C08198200EFF6D5 /* Binding.swift */; };
 		4D89D64D1C08198200EFF6D5 /* Clause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D89D6451C08198200EFF6D5 /* Clause.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D576C9C1C081F66002CA7F8 /* Snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Snapshot.swift; path = Axiomatic/Snapshot.swift; sourceTree = SOURCE_ROOT; };
 		4D85499C1C06D54600DECE50 /* Axiomatic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Axiomatic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8549A61C06D54700DECE50 /* AxiomaticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AxiomaticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D89D6441C08198200EFF6D5 /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Binding.swift; path = Axiomatic/Binding.swift; sourceTree = SOURCE_ROOT; };
@@ -88,13 +90,14 @@
 			isa = PBXGroup;
 			children = (
 				4D89D6471C08198200EFF6D5 /* Info.plist */,
-				4D89D6441C08198200EFF6D5 /* Binding.swift */,
-				4D89D6451C08198200EFF6D5 /* Clause.swift */,
 				4D89D6461C08198200EFF6D5 /* Error.swift */,
-				4D89D6481C08198200EFF6D5 /* Predicate.swift */,
-				4D89D6491C08198200EFF6D5 /* System.swift */,
+				4D89D6441C08198200EFF6D5 /* Binding.swift */,
 				4D89D64A1C08198200EFF6D5 /* Unifiable.swift */,
 				4D89D64B1C08198200EFF6D5 /* Value.swift */,
+				4D89D6481C08198200EFF6D5 /* Predicate.swift */,
+				4D576C9C1C081F66002CA7F8 /* Snapshot.swift */,
+				4D89D6451C08198200EFF6D5 /* Clause.swift */,
+				4D89D6491C08198200EFF6D5 /* System.swift */,
 			);
 			name = Axiomatic;
 			path = Unity;
@@ -104,9 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				4D89D6541C08198F00EFF6D5 /* Info.plist */,
-				4D89D6551C08198F00EFF6D5 /* LogicSystemTests.swift */,
 				4D89D6561C08198F00EFF6D5 /* NestedUnificationTests.swift */,
 				4D89D6571C08198F00EFF6D5 /* SimpleUnificationTests.swift */,
+				4D89D6551C08198F00EFF6D5 /* LogicSystemTests.swift */,
 			);
 			name = AxiomaticTests;
 			path = UnityTests;
@@ -224,6 +227,7 @@
 				4D89D6511C08198200EFF6D5 /* System.swift in Sources */,
 				4D89D64C1C08198200EFF6D5 /* Binding.swift in Sources */,
 				4D89D64D1C08198200EFF6D5 /* Clause.swift in Sources */,
+				4D576C9D1C081F66002CA7F8 /* Snapshot.swift in Sources */,
 				4D89D6531C08198200EFF6D5 /* Value.swift in Sources */,
 				4D89D64E1C08198200EFF6D5 /* Error.swift in Sources */,
 			);
