@@ -63,7 +63,7 @@ class SimpleUnificationTests: XCTestCase {
         
         try! Unifiable.unify(.Variable(a), .Literal(10))
         
-        let snapshotA = a.snapshot(), snapshotB = b.snapshot()
+        let snapshotA = a.snapshotx(), snapshotB = b.snapshotx()
         do {
             try Unifiable.unify(.Variable(b), .Literal(-10))
             try Unifiable.unify(.Variable(a), .Variable(b))

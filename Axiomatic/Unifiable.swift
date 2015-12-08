@@ -69,3 +69,14 @@ extension Unifiable where Value: UnifiableType {
 public func ==<Value>(lhs: Unifiable<Value>, rhs: Unifiable<Value>) -> Bool {
     return lhs.value == rhs.value
 }
+
+extension Unifiable {
+    func snapshot() -> GlueSnapshot<Value> {
+        switch self {
+        case .Literal:
+            return GlueSnapshot.empty()
+        case .Variable(let binding):
+            return binding.snapshot()
+        }
+    }
+}

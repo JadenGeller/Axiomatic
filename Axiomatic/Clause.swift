@@ -6,7 +6,7 @@
 //  Copyright © 2015 Jaden Geller. All rights reserved.
 //
 
-public enum Clause<Operator: Equatable, Argument: Equatable> {
+public enum Clause<Operator: Hashable, Argument: Equatable> {
     case Fact(Predicate<Operator, Argument>)
     case Rule(Predicate<Operator, Argument>, [Predicate<Operator, Argument>])
     

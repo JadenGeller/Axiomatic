@@ -6,32 +6,70 @@
 //  Copyright © 2015 Jaden Geller. All rights reserved.
 //
 
-public class System<Operator: Equatable, Argument: Equatable> {
-    private let clauses: [Clause<Operator, Argument>]
-    
-    public init(clauses: [Clause<Operator, Argument>]) {
-        self.clauses = clauses
+extension SequenceType {
+    func groupBy<Group: Hashable>(group: Generator.Element -> Group) -> [Group : [Generator.Element]] {
+        var result: [Group : [Generator.Element]] = [:]
+        forEach { element in
+            result[group(element)] = (result[group(element)] ?? []) + [element]
+        }
+        return result
     }
-    
-    public func query(goal: Predicate<Operator, Argument>) throws {
-        // WE WANT TO USE A CLEAN SYSTEM OF EVERY LOOP IN THE FOR LOOP SO WE CAN REUSE RULES
-        for clause in clauses where clause.functor == goal.functor && clause.arity == goal.arity {
+}
+
+extension Predicate {
+    func solve(clauses: [ClauseSignature<Operator> : [Clause<Operator, Argument>]], then: () throws -> ()) throws {
+        for clause in clauses[signature] ?? [] {
+            let saved = snapshot()
             do {
                 switch clause {
                 case .Fact(let predicate):
-                    return try goal.unify(predicate)
+                    try unify(predicate)
                 case .Rule(let predicate, let dependencies):
-                    try goal.unify(predicate)
-                    
-                    // NOTE; WE NEED TO MAKE A CLEAN COPY OF OUR SYSTEM FOR EACH RECURSE
-                    // BC WE MIGHT WANT TO REUSE A RULE THAT HAS ALREADY BEEN UNIFIED TO
-                    try dependencies.forEach(goal.unify)
+                    try unify(predicate)
+                    let solveDependencies = try dependencies.reduce({}) { (next: () throws -> (), predicate: Predicate<Operator, Argument>) throws -> (() throws -> ()) in
+                        { try predicate.solve(clauses, then: next) }
+                    }
+                    try solveDependencies()
                 }
-            }
-            catch {
+                return try then()
+            } catch _ as UnificationError {
+                print("blah", self)
+                saved.restore()
                 continue
             }
         }
-        throw UnificationError("Unable to unify.")
+        throw UnificationError("Unable to unify")
     }
+}
+
+public class System<Operator: Hashable, Argument: Equatable> {
+    private let clauses: [ClauseSignature<Operator> : [Clause<Operator, Argument>]]
+    
+    public init(clauses: [Clause<Operator, Argument>]) {
+        self.clauses = clauses.groupBy { $0.signature }
+    }
+    
+    public func unify(goals: [Predicate<Operator, Argument>]) throws {
+        try goals.first!.solve(clauses, then: {
+            print("WOOT")
+        })
+    }
+//    
+//        // WE WANT TO USE A CLEAN SYSTEM OF EVERY LOOP IN THE FOR LOOP SO WE CAN REUSE RULES
+//        for clause in clauses where clause.functor == goal.functor && clause.arity == goal.arity {
+//            do {
+//                switch clause {
+//                case .Fact(let predicate):
+//                    return try goal.unify(predicate)
+//                case .Rule(let predicate, let dependencies):
+//                    try goal.unify(predicate)
+//                    try dependencies.forEach(goal.unify)
+//                }
+//            }
+//            catch {
+//                continue
+//            }
+//        }
+//        throw UnificationError("Unable to unify.")
+//    }
 }

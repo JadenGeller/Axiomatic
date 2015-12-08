@@ -6,7 +6,7 @@
 //  Copyright © 2015 Jaden Geller. All rights reserved.
 //
 
-public enum Value<Operator: Equatable, Argument: Equatable> {
+public enum Value<Operator: Hashable, Argument: Equatable> {
     case Atom(Argument)
     case Relation(Predicate<Operator, Argument>)
 }

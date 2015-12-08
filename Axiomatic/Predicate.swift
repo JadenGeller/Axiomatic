@@ -6,12 +6,17 @@
 //  Copyright © 2015 Jaden Geller. All rights reserved.
 //
 
-public struct Predicate<Operator: Equatable, Argument: Equatable> {
+public struct Predicate<Operator: Hashable, Argument: Equatable> {
     let functor: Operator
     let arguments: [Unifiable<Value<Operator, Argument>>]
     
     var arity: Int {
         return arguments.count
+    }
+    
+    internal init(functor: Operator, arguments: [Unifiable<Value<Operator, Argument>>]) {
+        self.functor = functor
+        self.arguments = arguments
     }
 }
 
@@ -30,4 +35,18 @@ extension Predicate: UnifiableType {
 extension Predicate: Equatable {}
 public func ==<Operator, Argument>(lhs: Predicate<Operator, Argument>, rhs: Predicate<Operator, Argument>) -> Bool {
     return lhs.functor == rhs.functor && lhs.arguments == rhs.arguments
+}
+
+struct PredicateSnapshot<Operator: Hashable, Argument: Equatable> {
+    let glueSnapshots: [GlueSnapshot<Value<Operator, Argument>>]
+    
+    func restore() {
+        glueSnapshots.forEach{ $0.restore() }
+    }
+}
+
+extension Predicate {
+    func snapshot() -> PredicateSnapshot<Operator, Argument> {
+        return PredicateSnapshot(glueSnapshots: arguments.map{ $0.snapshot() })
+    }
 }

@@ -8,7 +8,7 @@
 
 // Basic properties
 public class Binding<Value: Equatable> {
-    private var glue: Glue<Value> {
+    internal var glue: Glue<Value> {
         willSet { glue.bindings.remove(self) }
         didSet  { glue.bindings.insert(self) }
     }
@@ -27,7 +27,7 @@ public class Binding<Value: Equatable> {
 extension Binding {
     public typealias Snapshot = Glue<Value>
     
-    public func snapshot() -> Snapshot {
+    public func snapshotx() -> Snapshot {
         return glue
     }
     public func revert(toSnapshot snapshot: Snapshot) {
@@ -92,5 +92,31 @@ public class Glue<Value: Equatable> {
         }
         
         return merged
+    }
+}
+
+struct GlueSnapshot<Value: Equatable> {
+    private let value: Value?
+    private let bindings: Set<Binding<Value>>
+    
+    static func empty() -> GlueSnapshot<Value> {
+        return GlueSnapshot(value: nil, bindings: [])
+    }
+    
+    func restore() {
+        let glue = Glue(value: value)
+        bindings.forEach{ $0.glue = glue }
+    }
+}
+
+extension Glue {
+    func snapshot() -> GlueSnapshot<Value> {
+        return GlueSnapshot(value: value, bindings: bindings)
+    }
+}
+
+extension Binding {
+    func snapshot() -> GlueSnapshot<Value> {
+        return glue.snapshot()
     }
 }
