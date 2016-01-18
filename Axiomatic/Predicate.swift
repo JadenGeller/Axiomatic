@@ -14,7 +14,7 @@ public struct Predicate<Operator: Hashable, Argument: Equatable> {
         return arguments.count
     }
     
-    internal init(functor: Operator, arguments: [Unifiable<Value<Operator, Argument>>]) {
+    public init(functor: Operator, arguments: [Unifiable<Value<Operator, Argument>>]) {
         self.functor = functor
         self.arguments = arguments
     }
