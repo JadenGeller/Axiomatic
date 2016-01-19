@@ -17,7 +17,7 @@ public struct Clause<Atom: Hashable> {
         self.body = []
     }
     
-    public init(rule: Predicate<Atom>, iff conditions: [Predicate<Atom>]) {
+    public init(rule: Predicate<Atom>, conditions: [Predicate<Atom>]) {
         self.head = rule
         self.body = conditions
     }
@@ -33,38 +33,38 @@ extension Clause: CustomStringConvertible {
 // Bindings used in a `Clause` are expected to remain local to a clause. As such, initializers that properly scope needed bindings
 // are provided for convenience and correctness.
 extension Clause {
-    public init(build: () -> (rule: Predicate<Atom>, iff: [Predicate<Atom>])) {
+    public init(build: () -> (rule: Predicate<Atom>, conditions: [Predicate<Atom>])) {
         let (rule, conditions) = build()
-        self.init(rule: rule, iff: conditions)
+        self.init(rule: rule, conditions: conditions)
     }
     
-    public init(build: Binding<Predicate<Atom>> -> (rule: Predicate<Atom>, iff: [Predicate<Atom>])) {
+    public init(build: Binding<Predicate<Atom>> -> (rule: Predicate<Atom>, conditions: [Predicate<Atom>])) {
         let (rule, conditions) = build(Binding())
-        self.init(rule: rule, iff: conditions)
+        self.init(rule: rule, conditions: conditions)
     }
     
-    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, iff: [Predicate<Atom>])) {
+    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, conditions: [Predicate<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding())
-        self.init(rule: rule, iff: conditions)
+        self.init(rule: rule, conditions: conditions)
     }
     
-    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, iff: [Predicate<Atom>])) {
+    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, conditions: [Predicate<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding(), Binding())
-        self.init(rule: rule, iff: conditions)
+        self.init(rule: rule, conditions: conditions)
     }
     
-    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, iff: [Predicate<Atom>])) {
+    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, conditions: [Predicate<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding(), Binding(), Binding())
-        self.init(rule: rule, iff: conditions)
+        self.init(rule: rule, conditions: conditions)
     }
     
-    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, iff: [Predicate<Atom>])) {
+    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, conditions: [Predicate<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding(), Binding(), Binding(), Binding())
-        self.init(rule: rule, iff: conditions)
+        self.init(rule: rule, conditions: conditions)
     }
     
-    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, iff: [Predicate<Atom>])) {
+    public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, conditions: [Predicate<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding(), Binding(), Binding(), Binding(), Binding())
-        self.init(rule: rule, iff: conditions)
+        self.init(rule: rule, conditions: conditions)
     }
 }

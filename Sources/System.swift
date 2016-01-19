@@ -8,42 +8,40 @@
 
 import Gluey
 
-extension SequenceType {
-    private func groupBy<Group: Hashable>(group: Generator.Element -> Group) -> [Group : [Generator.Element]] {
-        var result: [Group : [Generator.Element]] = [:]
-        forEach { element in
-            result[group(element)] = (result[group(element)] ?? []) + [element]
-        }
-        return result
-    }
-}
-
 public struct System<Atom: Hashable> {
     private let clauses: [Functor<Atom> : [Clause<Atom>]]
-}
-
-extension System {
+    
     public init<S: SequenceType where S.Generator.Element == Clause<Atom>>(clauses: S) {
         self.clauses = clauses.groupBy{ $0.head.functor }
     }
+    
+    private func uniqueClausesWithFunctor(functor: Functor<Atom>) -> [Clause<Atom>] {
+        let nonUniqueClauses = clauses[functor] ?? []
+        return nonUniqueClauses.map{  }
+    }
 }
 
 extension System {
-    public func satisfy(predicates: [Predicate<Atom>], success: () throws -> () = {}) throws {
-        let satisfyAll = predicates.reduce(success) { lambda, predicate in { try self.satisfy(predicate, success: lambda) } }
+    public func enumerateMatches(goals: [Predicate<Atom>], onMatch: () throws -> ()) throws {
+        let satisfyAll = goals.reduce(onMatch) { lambda, predicate in { try self.enumerateMatches(predicate, onMatch: lambda) } }
         try satisfyAll()
     }
     
-    public func satisfy(predicate: Predicate<Atom>, success: () throws -> () = {}) throws {
-        print(predicate)
-        for clause in clauses[predicate.functor] ?? [] {
+    public func enumerateMatches(goal: Predicate<Atom>, onMatch: () throws -> ()) throws {
+        print("GOAL: \(goal)")
+        for clause in uniqueClausesWithFunctor(goal.functor) {
             print("ATTEMPT: \(clause)")
             do {
-                try Predicate.attempt(predicate) {
-                    try Predicate.unify(predicate, clause.head)
-                    print("UNIFIED!")
-                    try self.satisfy(clause.body, success: success)
+                try Predicate.attempt(goal) {
+                    try Predicate.unify(goal, clause.head)
+                    print("CALL: \(clause.head)")
+                    try self.enumerateMatches(clause.body) {
+                        print("SUCCESS: \(clause.head)")
+                        try onMatch()
+                        throw UnificationError("CONTINUE")
+                    }
                 }
+                print("DONE")
                 return
             } catch let error as UnificationError {
                 print("BACKTRACKING: \(error)")

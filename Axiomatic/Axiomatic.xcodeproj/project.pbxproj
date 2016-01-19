@@ -12,22 +12,23 @@
 		4D6D532B1C4DE85F006F38F1 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D53271C4DE85F006F38F1 /* Predicate.swift */; };
 		4D6D532C1C4DE85F006F38F1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D53281C4DE85F006F38F1 /* System.swift */; };
 		4D6D532E1C4E08A1006F38F1 /* SystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D532D1C4E08A1006F38F1 /* SystemTests.swift */; };
-		4D6D53381C4E19B9006F38F1 /* Gluey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6D53351C4E19B1006F38F1 /* Gluey.framework */; };
+		4D6D534C1C4E2372006F38F1 /* Gluey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6D53491C4E236C006F38F1 /* Gluey.framework */; };
+		4D6D53501C4E3589006F38F1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D534F1C4E3589006F38F1 /* Utility.swift */; };
 		4DC710511C4D061D00834A0E /* Axiomatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC710461C4D061D00834A0E /* Axiomatic.framework */; };
 		4DC710561C4D061D00834A0E /* PredicateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC710551C4D061D00834A0E /* PredicateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4D6D53341C4E19B1006F38F1 /* PBXContainerItemProxy */ = {
+		4D6D53481C4E236C006F38F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4D6D532F1C4E19B1006F38F1 /* Gluey.xcodeproj */;
+			containerPortal = 4D6D53431C4E236C006F38F1 /* Gluey.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4D9C71251C4CDA8C008C8726;
 			remoteInfo = Gluey;
 		};
-		4D6D53361C4E19B1006F38F1 /* PBXContainerItemProxy */ = {
+		4D6D534A1C4E236C006F38F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4D6D532F1C4E19B1006F38F1 /* Gluey.xcodeproj */;
+			containerPortal = 4D6D53431C4E236C006F38F1 /* Gluey.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4D9C712F1C4CDA8C008C8726;
 			remoteInfo = GlueyTests;
@@ -47,7 +48,8 @@
 		4D6D53271C4DE85F006F38F1 /* Predicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Predicate.swift; path = ../../Sources/Predicate.swift; sourceTree = "<group>"; };
 		4D6D53281C4DE85F006F38F1 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../Sources/System.swift; sourceTree = "<group>"; };
 		4D6D532D1C4E08A1006F38F1 /* SystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemTests.swift; sourceTree = "<group>"; };
-		4D6D532F1C4E19B1006F38F1 /* Gluey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Gluey.xcodeproj; path = "../Packages/Gluey-1.3.0/Gluey/Gluey.xcodeproj"; sourceTree = "<group>"; };
+		4D6D53431C4E236C006F38F1 /* Gluey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Gluey.xcodeproj; path = "../Packages/Gluey-1.4.1/Gluey/Gluey.xcodeproj"; sourceTree = "<group>"; };
+		4D6D534F1C4E3589006F38F1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = ../../Sources/Utility.swift; sourceTree = "<group>"; };
 		4DC710461C4D061D00834A0E /* Axiomatic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Axiomatic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC7104B1C4D061D00834A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DC710501C4D061D00834A0E /* AxiomaticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AxiomaticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D6D53381C4E19B9006F38F1 /* Gluey.framework in Frameworks */,
+				4D6D534C1C4E2372006F38F1 /* Gluey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,11 +77,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4D6D53301C4E19B1006F38F1 /* Products */ = {
+		4D6D53441C4E236C006F38F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D6D53351C4E19B1006F38F1 /* Gluey.framework */,
-				4D6D53371C4E19B1006F38F1 /* GlueyTests.xctest */,
+				4D6D53491C4E236C006F38F1 /* Gluey.framework */,
+				4D6D534B1C4E236C006F38F1 /* GlueyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,7 +89,7 @@
 		4DC7103C1C4D061D00834A0E = {
 			isa = PBXGroup;
 			children = (
-				4D6D532F1C4E19B1006F38F1 /* Gluey.xcodeproj */,
+				4D6D53431C4E236C006F38F1 /* Gluey.xcodeproj */,
 				4DC710481C4D061D00834A0E /* Axiomatic */,
 				4DC710541C4D061D00834A0E /* AxiomaticTests */,
 				4DC710471C4D061D00834A0E /* Products */,
@@ -111,6 +113,7 @@
 				4D6D53251C4DE85F006F38F1 /* Clause.swift */,
 				4D6D53261C4DE85F006F38F1 /* Functor.swift */,
 				4D6D53281C4DE85F006F38F1 /* System.swift */,
+				4D6D534F1C4E3589006F38F1 /* Utility.swift */,
 			);
 			path = Axiomatic;
 			sourceTree = "<group>";
@@ -204,8 +207,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 4D6D53301C4E19B1006F38F1 /* Products */;
-					ProjectRef = 4D6D532F1C4E19B1006F38F1 /* Gluey.xcodeproj */;
+					ProductGroup = 4D6D53441C4E236C006F38F1 /* Products */;
+					ProjectRef = 4D6D53431C4E236C006F38F1 /* Gluey.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -217,18 +220,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4D6D53351C4E19B1006F38F1 /* Gluey.framework */ = {
+		4D6D53491C4E236C006F38F1 /* Gluey.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Gluey.framework;
-			remoteRef = 4D6D53341C4E19B1006F38F1 /* PBXContainerItemProxy */;
+			remoteRef = 4D6D53481C4E236C006F38F1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4D6D53371C4E19B1006F38F1 /* GlueyTests.xctest */ = {
+		4D6D534B1C4E236C006F38F1 /* GlueyTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GlueyTests.xctest;
-			remoteRef = 4D6D53361C4E19B1006F38F1 /* PBXContainerItemProxy */;
+			remoteRef = 4D6D534A1C4E236C006F38F1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D6D53501C4E3589006F38F1 /* Utility.swift in Sources */,
 				4D6D53291C4DE85F006F38F1 /* Clause.swift in Sources */,
 				4D6D532B1C4DE85F006F38F1 /* Predicate.swift in Sources */,
 				4D6D532C1C4DE85F006F38F1 /* System.swift in Sources */,
