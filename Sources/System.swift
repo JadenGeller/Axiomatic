@@ -15,10 +15,10 @@ public struct System<Atom: Hashable> {
         self.clauses = clauses.groupBy{ $0.head.functor }
     }
     
-    private func uniqueClausesWithFunctor(functor: Functor<Atom>) -> [Clause<Atom>] {
-        let nonUniqueClauses = clauses[functor] ?? []
-        return nonUniqueClauses.map{  }
-    }
+//    private func uniqueClausesWithFunctor(functor: Functor<Atom>) -> [Clause<Atom>] {
+//        let nonUniqueClauses = clauses[functor] ?? []
+//        return nonUniqueClauses.map{  }
+//    }
 }
 
 extension System {
@@ -29,7 +29,7 @@ extension System {
     
     public func enumerateMatches(goal: Predicate<Atom>, onMatch: () throws -> ()) throws {
         print("GOAL: \(goal)")
-        for clause in uniqueClausesWithFunctor(goal.functor) {
+        for clause in clauses[goal.functor] ?? [] {
             print("ATTEMPT: \(clause)")
             do {
                 try Predicate.attempt(goal) {
