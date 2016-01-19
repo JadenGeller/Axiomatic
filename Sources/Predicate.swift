@@ -47,10 +47,10 @@ public func ==<Atom: Hashable>(lhs: Predicate<Atom>, rhs: Predicate<Atom>) -> Bo
 extension Predicate: Unifiable {
     public static func unify(lhs: Predicate, _ rhs: Predicate) throws {
         guard lhs.name == rhs.name else {
-            throw UnificationError("Unable to unify functors with differing names.")
+            throw UnificationError("Unable to unify functors with differing names \(lhs.name) and \(rhs.name).")
         }
         guard lhs.arity == rhs.arity else {
-            throw UnificationError("Unable to unify functors with differing arity.")
+            throw UnificationError("Unable to unify functors with differing arity \(lhs.arity) and \(rhs.arity).")
         }
         try zip(lhs.arguments, rhs.arguments).forEach(Term.unify)
     }
