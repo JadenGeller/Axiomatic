@@ -11,15 +11,20 @@ import Gluey
 public struct Clause<Atom: Hashable> {
     public var head: Predicate<Atom>
     public var body: [Predicate<Atom>]
-    
+
+    private init(head: Predicate<Atom>, body: [Predicate<Atom>]) {
+        self.head = head
+        self.body = body
+    }
+}
+
+extension Clause {
     public init(fact: Predicate<Atom>) {
-        self.head = fact
-        self.body = []
+        self.init(head: fact, body: [])
     }
     
     public init(rule: Predicate<Atom>, conditions: [Predicate<Atom>]) {
-        self.head = rule
-        self.body = conditions
+        self.init(head: rule, body: conditions)
     }
 }
 
@@ -66,5 +71,11 @@ extension Clause {
     public init(build: (Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>, Binding<Predicate<Atom>>) -> (rule: Predicate<Atom>, conditions: [Predicate<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding(), Binding(), Binding(), Binding(), Binding())
         self.init(rule: rule, conditions: conditions)
+    }
+}
+
+extension Clause {
+    public func copy(withContext context: CopyContext<Predicate<Atom>> = CopyContext()) -> Clause {
+        return Clause(head: head.copy(withContext: context), body: body.map{ $0.copy(withContext: context) })
     }
 }

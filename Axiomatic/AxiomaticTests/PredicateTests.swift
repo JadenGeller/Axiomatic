@@ -14,7 +14,9 @@ class PredicateTests: XCTestCase {
     func testUnifyPredicate() {
         let a = Binding<Predicate<Int>>()
         let b = Binding<Predicate<Int>>()
+        // 100(a, 0, 1).
         let p1 = Predicate(name: 100, arguments: [.Variable(a), .Constant(Predicate(atom: 0)), .Constant(Predicate(atom: 1))])
+        // 100(-1, 0, b).
         let p2 = Predicate(name: 100, arguments: [.Constant(Predicate(atom: -1)), .Constant(Predicate(atom: 0)), .Variable(b)])
                 
         try! Predicate.unify(p1, p2)
@@ -25,7 +27,9 @@ class PredicateTests: XCTestCase {
     
     func testUnifyPredicateNested() {
         let a = Binding<Predicate<Int>>()
+        // 100(10(1)).
         let p1 = Predicate(name: 100, arguments: [.Constant(Predicate(name: 10, arguments: [.Constant(Predicate(atom: 1))]))])
+        // 100(10(a)).
         let p2 = Predicate(name: 100, arguments: [.Constant(Predicate(name: 10, arguments: [.Variable(a)]))])
         
         try! Predicate.unify(p1, p2)

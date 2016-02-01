@@ -64,4 +64,8 @@ extension Predicate: Unifiable {
     }
 }
 
-
+extension Predicate {
+    public func copy(withContext context: CopyContext<Predicate<Atom>> = CopyContext()) -> Predicate {
+        return Predicate(name: name, arguments: arguments.map{ $0.copy(withContext: context) })
+    }
+}

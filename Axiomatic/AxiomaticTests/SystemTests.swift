@@ -14,7 +14,9 @@ import Gluey
 class SystemTests: XCTestCase {
     func testSuccess() {
         let system = System(clauses: [
+            // jaden(cool).
             Clause(fact: Predicate(name: "jaden", arguments: [.Constant(Predicate(atom: "cool"))])),
+            // swift(awesome).
             Clause(fact: Predicate(name: "swift", arguments: [.Constant(Predicate(atom: "awesome"))]))
         ])
         var count = 0
@@ -26,10 +28,13 @@ class SystemTests: XCTestCase {
     
     func testFailure() {
         let system = System(clauses: [
+            // jaden(cool).
             Clause(fact: Predicate(name: "jaden", arguments: [.Constant(Predicate(atom: "cool"))])),
+            // swift(awesome).
             Clause(fact: Predicate(name: "swift", arguments: [.Constant(Predicate(atom: "awesome"))]))
             ])
         var count = 0
+        // swift(uncool).
         try! system.enumerateMatches(Predicate(name: "swift", arguments: [.Constant(Predicate(atom: "uncool"))])) {
             count += 1
         }
@@ -65,7 +70,7 @@ class SystemTests: XCTestCase {
             Clause(fact: Predicate(name: "test", arguments: [
                 .Constant(Predicate(atom: "a")), .Constant(Predicate(atom: "0")), .Constant(Predicate(atom: "x"))
                 ])),
-            // test(b, 1, y).
+            // test(a, 1, y).
             Clause(fact: Predicate(name: "test", arguments: [
                 .Constant(Predicate(atom: "a")), .Constant(Predicate(atom: "1")), .Constant(Predicate(atom: "y"))
                 ]))
@@ -84,10 +89,13 @@ class SystemTests: XCTestCase {
     
     func testRule() {
         let system = System(clauses: [
+            // male(jaden).
             Clause(fact: Predicate(name: "male", arguments: [.Constant(Predicate(atom: "jaden"))])),
+            // male(matt).
             Clause(fact: Predicate(name: "male", arguments: [.Constant(Predicate(atom: "matt"))])),
             Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "tuesady"))])),
             Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "kiley"))])),
+            // father(PARENT, CHILD) :- male(PARENT), parent(PARENT, CHILD).
             Clause{ PARENT, CHILD in (
                 rule: Predicate(name: "father", arguments: [.Variable(PARENT), .Variable(CHILD)]),
                 requirements: [
@@ -109,8 +117,6 @@ class SystemTests: XCTestCase {
         let CHILD = Binding<Predicate<String>>()
         try! system.enumerateMatches(Predicate(name: "father", arguments: [.Constant(Predicate(atom: "matt")), .Variable(CHILD)])) {
             results.append(CHILD.value!.name)
-            print("MATCH: \(CHILD.value)")
-            throw UnificationError("continue")
         }
         XCTAssertEqual(["jaden", "kiley"], results)
     }
