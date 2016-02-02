@@ -93,37 +93,46 @@ class SystemTests: XCTestCase {
             Clause(fact: Predicate(name: "male", arguments: [.Constant(Predicate(atom: "jaden"))])),
             // male(matt).
             Clause(fact: Predicate(name: "male", arguments: [.Constant(Predicate(atom: "matt"))])),
-            Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "tuesady"))])),
+            // female(tuesday).
+            Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "tuesday"))])),
+            // female(kiley).
             Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "kiley"))])),
-            // father(PARENT, CHILD) :- male(PARENT), parent(PARENT, CHILD).
-            Clause{ PARENT, CHILD in (
-                rule: Predicate(name: "father", arguments: [.Variable(PARENT), .Variable(CHILD)]),
+            // father(Parent, Child) :- male(Parent), parent(Parent, Child).
+            Clause{ parent, child in (
+                rule: Predicate(name: "father", arguments: [.Variable(parent), .Variable(child)]),
                 requirements: [
-                    Predicate(name: "male", arguments: [.Variable(PARENT)]),
-                    Predicate(name: "parent", arguments: [.Variable(PARENT), .Variable(CHILD)])
+                    Predicate(name: "male", arguments: [.Variable(parent)]),
+                    Predicate(name: "parent", arguments: [.Variable(parent), .Variable(child)])
                 ]
             ) },
+            // parent(tuesday, jaden).
             Clause(fact: Predicate(name: "parent", arguments:
                 [.Constant(Predicate(atom: "tuesday")), .Constant(Predicate(atom: "jaden"))])),
+            // parent(matt, jaden).
             Clause(fact: Predicate(name: "parent", arguments:
                 [.Constant(Predicate(atom: "matt")), .Constant(Predicate(atom: "jaden"))])),
+            // parent(matt, kiley).
             Clause(fact: Predicate(name: "parent", arguments:
                 [.Constant(Predicate(atom: "matt")), .Constant(Predicate(atom: "kiley"))])),
+            // parent(tuesday, kiley).
             Clause(fact: Predicate(name: "parent", arguments:
                 [.Constant(Predicate(atom: "tuesday")), .Constant(Predicate(atom: "kiley"))]))
         ])
         
         var results: [String] = []
-        let CHILD = Binding<Predicate<String>>()
-        try! system.enumerateMatches(Predicate(name: "father", arguments: [.Constant(Predicate(atom: "matt")), .Variable(CHILD)])) {
-            results.append(CHILD.value!.name)
+        let Child = Binding<Predicate<String>>()
+        // father(matt, Child).
+        try! system.enumerateMatches(Predicate(name: "father", arguments: [.Constant(Predicate(atom: "matt")), .Variable(Child)])) {
+            results.append(Child.value!.name)
         }
         XCTAssertEqual(["jaden", "kiley"], results)
     }
     
     func testRecursive() {
         let system = System(clauses: [
+            // test(x).
             Clause(fact: Predicate(name: "test", arguments: [.Constant(Predicate(atom: "x"))])),
+            // test(test(A)) :- test(A).
             Clause{ A in (
                 rule: Predicate(name: "test", arguments: [.Constant(Predicate(name: "test", arguments: [.Variable(A)]))]),
                 requirements: [Predicate(name: "test", arguments: [.Variable(A)])]
@@ -131,9 +140,50 @@ class SystemTests: XCTestCase {
         ])
         let A = Binding<Predicate<String>>()
         var count = 0
-        try! system.enumerateMatches(Predicate(name: "test", arguments: [.Constant(Predicate(name: "test", arguments: [.Constant(Predicate(name: "test", arguments: [.Constant(Predicate(name: "test", arguments: [.Variable(A)]))]))]))])) {
+        // test(test(test(test(A)))).
+        _ = try? system.enumerateMatches(Predicate(name: "test", arguments: [.Constant(Predicate(name: "test", arguments: [.Constant(Predicate(name: "test", arguments: [.Constant(Predicate(name: "test", arguments: [.Variable(A)]))]))]))])) {
+            XCTAssertEqual("x", A.value?.name)
             count += 1
+            throw NSError(domain: "I don't care", code: 0, userInfo: nil)
         }
         XCTAssertEqual(1, count)
     }
+    
+//    func testTypeSystem() {
+//        let system = System(clauses: [
+//            // square :: Int -> Int
+//            Clause(fact: Predicate(name: "binding", arguments: [
+//                .Constant(Predicate(atom: "square")),
+//                .Constant(Predicate(name: "function", arguments: [
+//                    .Constant(Predicate(atom: "Int")),
+//                    .Constant(Predicate(atom: "Int"))
+//                ]))
+//            ])),
+//            // sqrt :: Int -> Int
+//            Clause(fact: Predicate(name: "binding", arguments: [
+//                .Constant(Predicate(atom: "sqrt")),
+//                .Constant(Predicate(name: "function", arguments: [
+//                    .Constant(Predicate(atom: "Int")),
+//                    .Constant(Predicate(atom: "Int"))
+//                ]))
+//            ])),
+//            // count :: Array a -> Int
+//            Clause(fact: Predicate(name: "binding", arguments: [
+//                .Constant(Predicate(atom: "count")),
+//                .Constant(Predicate(name: "function", arguments: [
+//                    .Constant(Predicate(name: "Array", arguments: [.Variable(A)])),
+//                    .Constant(Predicate(atom: "Int"))
+//                ]))
+//            ])),
+//        ])
+//    }
 }
+
+
+
+
+
+
+
+
+

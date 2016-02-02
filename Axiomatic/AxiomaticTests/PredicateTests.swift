@@ -62,4 +62,26 @@ class PredicateTests: XCTestCase {
         
         XCTAssertNil(try? Predicate.unify(p1, p2))
     }
+    
+    func testCopy() {
+        var a = Predicate<Int>(name: 100, arguments: [.Variable(Binding())])
+        var b = Predicate<Int>(name: 100, arguments: [.Variable(Binding())])
+        try! Predicate.unify(a, b)
+
+        let context = CopyContext()
+        var aa = Predicate.copy(a, withContext: context)
+        var bb = Predicate.copy(b, withContext: context)
+        
+        try! Predicate.unify(a, Predicate<Int>(name: 100, arguments: [.Constant(Predicate(atom: 5))]))
+        XCTAssertEqual(5, a.arguments[0].value?.name)
+        XCTAssertEqual(5, b.arguments[0].value?.name)
+        XCTAssertEqual(nil, aa.arguments[0].value?.name)
+        XCTAssertEqual(nil, bb.arguments[0].value?.name)
+
+        try! Predicate.unify(aa, Predicate<Int>(name: 100, arguments: [.Constant(Predicate(atom: -5))]))
+        XCTAssertEqual(5, a.arguments[0].value?.name)
+        XCTAssertEqual(5, b.arguments[0].value?.name)
+        XCTAssertEqual(-5, aa.arguments[0].value?.name)
+        XCTAssertEqual(-5, bb.arguments[0].value?.name)
+    }
 }

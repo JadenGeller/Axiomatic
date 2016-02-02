@@ -17,7 +17,8 @@ public struct System<Atom: Hashable> {
     
     private func uniqueClausesWithFunctor(functor: Functor<Atom>) -> LazyMapSequence<[Clause<Atom>], Clause<Atom>> {
         let nonUniqueClauses = clauses[functor] ?? []
-        return nonUniqueClauses.lazy.map { $0.copy() }
+        let context = CopyContext()
+        return nonUniqueClauses.lazy.map { Clause.copy($0, withContext: context) }
     }
 }
 
@@ -38,7 +39,7 @@ extension System {
                     try self.enumerateMatches(clause.body) {
                         print("SUCCESS: \(clause.head)")
                         try onMatch()
-                        throw UnificationError("CONTINUE")
+                        throw UnificationError("CONTINUE") // We need a way to end early.
                     }
                 }
                 print("DONE")

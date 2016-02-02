@@ -47,6 +47,8 @@ public func ==<Atom: Hashable>(lhs: Predicate<Atom>, rhs: Predicate<Atom>) -> Bo
 extension Predicate: Unifiable {
     public static func unify(lhs: Predicate, _ rhs: Predicate) throws {
         guard lhs.name == rhs.name else {
+            print("LHS", lhs)
+            print("RHS", rhs)
             throw UnificationError("Unable to unify functors with differing names \(lhs.name) and \(rhs.name).")
         }
         guard lhs.arity == rhs.arity else {
@@ -64,8 +66,8 @@ extension Predicate: Unifiable {
     }
 }
 
-extension Predicate {
-    public func copy(withContext context: CopyContext<Predicate<Atom>> = CopyContext()) -> Predicate {
-        return Predicate(name: name, arguments: arguments.map{ $0.copy(withContext: context) })
+extension Predicate: ContextCopyable {
+    public static func copy(this: Predicate, withContext context: CopyContext) -> Predicate {
+        return Predicate(name: this.name, arguments: this.arguments.map{ Term<Predicate<Atom>>.copy($0, withContext: context) })
     }
 }

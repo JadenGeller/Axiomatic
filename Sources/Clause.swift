@@ -74,8 +74,8 @@ extension Clause {
     }
 }
 
-extension Clause {
-    public func copy(withContext context: CopyContext<Predicate<Atom>> = CopyContext()) -> Clause {
-        return Clause(head: head.copy(withContext: context), body: body.map{ $0.copy(withContext: context) })
+extension Clause: ContextCopyable {
+    public static func copy(this: Clause, withContext context: CopyContext) -> Clause {
+        return Clause(head: Predicate.copy(this.head, withContext: context), body: this.body.map{ Predicate.copy($0, withContext: context) })
     }
 }
