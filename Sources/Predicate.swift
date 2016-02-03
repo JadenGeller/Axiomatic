@@ -10,9 +10,9 @@ import Gluey
 
 public struct Predicate<Atom: Hashable> {
     public var name: Atom
-    public var arguments: [Term<Predicate<Atom>>]
+    public var arguments: [Value<Predicate<Atom>>]
     
-    public init(name: Atom, arguments: [Term<Predicate<Atom>>]) {
+    public init(name: Atom, arguments: [Value<Predicate<Atom>>]) {
         self.name = name
         self.arguments = arguments
     }
@@ -54,12 +54,12 @@ extension Predicate: Unifiable {
         guard lhs.arity == rhs.arity else {
             throw UnificationError("Unable to unify functors with differing arity \(lhs.arity) and \(rhs.arity).")
         }
-        try zip(lhs.arguments, rhs.arguments).forEach(Term.unify)
+        try zip(lhs.arguments, rhs.arguments).forEach(Value.unify)
     }
     
     public static func attempt(value: Predicate, _ action: () throws -> ()) throws {
-        let attemptAll = value.arguments.reduce(action) { (lambda: () throws -> (), term: Term) in
-            let newLambda = { try Term.attempt(term, lambda) }
+        let attemptAll = value.arguments.reduce(action) { (lambda: () throws -> (), term: Value) in
+            let newLambda = { try Value.attempt(term, lambda) }
             return newLambda
         }
         try attemptAll()
@@ -68,6 +68,6 @@ extension Predicate: Unifiable {
 
 extension Predicate: ContextCopyable {
     public static func copy(this: Predicate, withContext context: CopyContext) -> Predicate {
-        return Predicate(name: this.name, arguments: this.arguments.map{ Term<Predicate<Atom>>.copy($0, withContext: context) })
+        return Predicate(name: this.name, arguments: this.arguments.map{ Value<Predicate<Atom>>.copy($0, withContext: context) })
     }
 }

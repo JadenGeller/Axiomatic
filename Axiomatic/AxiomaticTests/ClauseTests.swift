@@ -20,8 +20,8 @@ class ClauseTests: XCTestCase {
         let context = CopyContext()
         let b = Clause.copy(a, withContext: context)
         
-        guard case let Term.Variable(bindingA) = b.head.arguments.first! else { fatalError() }
-        guard case let Term.Variable(bindingB) = b.body.first!.arguments.first! else { fatalError() }
+        guard case let Value.Variable(bindingA) = b.head.arguments.first! else { fatalError() }
+        guard case let Value.Variable(bindingB) = b.body.first!.arguments.first! else { fatalError() }
         XCTAssertTrue(bindingA.glue === bindingB.glue)
     }
     
@@ -36,8 +36,8 @@ class ClauseTests: XCTestCase {
         let context = CopyContext()
         let b = Clause.copy(a, withContext: context)
         
-        guard case let Term.Variable(bindingA) = b.head.arguments.first! else { fatalError() }
-        guard case let Term.Variable(bindingB) = b.body.first!.arguments.first!.value!.arguments.first! else { fatalError() }
+        guard case let Value.Variable(bindingA) = b.head.arguments.first! else { fatalError() }
+        guard case let Value.Variable(bindingB) = b.body.first!.arguments.first!.value!.arguments.first! else { fatalError() }
         XCTAssertTrue(bindingA.glue === bindingB.glue)
     }
 }
