@@ -8,7 +8,7 @@
 
 import XCTest
 @testable import Axiomatic
-import Gluey
+@testable import Gluey
 
 class ClauseTests: XCTestCase {
     func testCopy() {
