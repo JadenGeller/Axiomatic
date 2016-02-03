@@ -13,8 +13,8 @@ import XCTest
 class ClauseTests: XCTestCase {
     func testCopy() {
         let a = Clause { binding in (
-            rule: Predicate<Int>(name: 100, arguments: [.Variable(binding)]),
-            conditions: [Predicate<Int>(name: 200, arguments: [.Variable(binding)])]
+            rule: Term<Int>(name: 100, arguments: [.Variable(binding)]),
+            conditions: [Term<Int>(name: 200, arguments: [.Variable(binding)])]
         )}
 
         let context = CopyContext()
@@ -27,9 +27,9 @@ class ClauseTests: XCTestCase {
     
     func testNestedCopy() {
         let a = Clause { binding in (
-            rule: Predicate<Int>(name: 100, arguments: [.Variable(binding)]),
-            conditions: [Predicate<Int>(name: 200, arguments: [
-                    .Constant(Predicate(name: 300, arguments: [.Variable(binding)]))
+            rule: Term<Int>(name: 100, arguments: [.Variable(binding)]),
+            conditions: [Term<Int>(name: 200, arguments: [
+                    .Constant(Term(name: 300, arguments: [.Variable(binding)]))
                 ])]
             )}
         

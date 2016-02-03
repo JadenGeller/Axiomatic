@@ -6,7 +6,7 @@
 //  Copyright © 2016 Jaden Geller. All rights reserved.
 //
 
-extension Predicate {
+extension Term {
     public var functor: Functor<Atom> {
         return Functor(name: name, arity: arity)
     }

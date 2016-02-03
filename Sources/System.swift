@@ -23,18 +23,18 @@ public struct System<Atom: Hashable> {
 }
 
 extension System {
-    public func enumerateMatches(goals: [Predicate<Atom>], onMatch: () throws -> ()) throws {
+    public func enumerateMatches(goals: [Term<Atom>], onMatch: () throws -> ()) throws {
         let satisfyAll = goals.reduce(onMatch) { lambda, predicate in { try self.enumerateMatches(predicate, onMatch: lambda) } }
         try satisfyAll()
     }
     
-    public func enumerateMatches(goal: Predicate<Atom>, onMatch: () throws -> ()) throws {
+    public func enumerateMatches(goal: Term<Atom>, onMatch: () throws -> ()) throws {
         print("GOAL: \(goal)")
         for clause in uniqueClausesWithFunctor(goal.functor) {
             print("ATTEMPT: \(clause)")
             do {
-                try Predicate.attempt(goal) {
-                    try Predicate.unify(goal, clause.head)
+                try Term.attempt(goal) {
+                    try Term.unify(goal, clause.head)
                     print("CALL: \(clause.head)")
                     try self.enumerateMatches(clause.body) {
                         print("SUCCESS: \(clause.head)")

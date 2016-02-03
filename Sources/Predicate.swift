@@ -1,5 +1,5 @@
 //
-//  Predicate.swift
+//  Term.swift
 //  Axiomatic
 //
 //  Created by Jaden Geller on 1/18/16.
@@ -8,11 +8,11 @@
 
 import Gluey
 
-public struct Predicate<Atom: Hashable> {
+public struct Term<Atom: Hashable> {
     public var name: Atom
-    public var arguments: [Value<Predicate<Atom>>]
+    public var arguments: [Value<Term<Atom>>]
     
-    public init(name: Atom, arguments: [Value<Predicate<Atom>>]) {
+    public init(name: Atom, arguments: [Value<Term<Atom>>]) {
         self.name = name
         self.arguments = arguments
     }
@@ -23,13 +23,13 @@ public struct Predicate<Atom: Hashable> {
     }
 }
 
-extension Predicate {
+extension Term {
     public var arity: Int {
         return arguments.count
     }
 }
 
-extension Predicate: CustomStringConvertible {
+extension Term: CustomStringConvertible {
     public var description: String {
         guard arity > 0 else { return String(name) }
         let args = arguments.map{ String($0) }.joinWithSeparator(", ")
@@ -37,15 +37,15 @@ extension Predicate: CustomStringConvertible {
     }
 }
 
-extension Predicate: Equatable {}
-public func ==<Atom: Hashable>(lhs: Predicate<Atom>, rhs: Predicate<Atom>) -> Bool {
+extension Term: Equatable {}
+public func ==<Atom: Hashable>(lhs: Term<Atom>, rhs: Term<Atom>) -> Bool {
     return lhs.name == rhs.name && lhs.arity == rhs.arity && zip(lhs.arguments, rhs.arguments).reduce(true) { result, pair in
         result && pair.0 == pair.1
     }
 }
 
-extension Predicate: Unifiable {
-    public static func unify(lhs: Predicate, _ rhs: Predicate) throws {
+extension Term: Unifiable {
+    public static func unify(lhs: Term, _ rhs: Term) throws {
         guard lhs.name == rhs.name else {
             print("LHS", lhs)
             print("RHS", rhs)
@@ -57,7 +57,7 @@ extension Predicate: Unifiable {
         try zip(lhs.arguments, rhs.arguments).forEach(Value.unify)
     }
     
-    public static func attempt(value: Predicate, _ action: () throws -> ()) throws {
+    public static func attempt(value: Term, _ action: () throws -> ()) throws {
         let attemptAll = value.arguments.reduce(action) { (lambda: () throws -> (), term: Value) in
             let newLambda = { try Value.attempt(term, lambda) }
             return newLambda
@@ -66,8 +66,8 @@ extension Predicate: Unifiable {
     }
 }
 
-extension Predicate: ContextCopyable {
-    public static func copy(this: Predicate, withContext context: CopyContext) -> Predicate {
-        return Predicate(name: this.name, arguments: this.arguments.map{ Value<Predicate<Atom>>.copy($0, withContext: context) })
+extension Term: ContextCopyable {
+    public static func copy(this: Term, withContext context: CopyContext) -> Term {
+        return Term(name: this.name, arguments: this.arguments.map{ Value<Term<Atom>>.copy($0, withContext: context) })
     }
 }
