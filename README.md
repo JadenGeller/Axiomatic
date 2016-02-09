@@ -44,6 +44,6 @@ try! system.enumerateMatches(Predicate(name: "father", arguments: [.Constant(Pre
 XCTAssertEqual(["jaden", "kiley"], results)
 ```
 
-Check out more examples [here](https://github.com/JadenGeller/Axiomatic/blob/master/Axiomatic/AxiomaticTests/SystemTests.swift)!
+Check out more examples [here](https://github.com/JadenGeller/Axiomatic/blob/master/Axiomatic/AxiomaticTests/SystemTests.swift)! And read documentation [here](http://jadengeller.github.io/Axiomatic/docs/index.html).
 
 More comprehensive README coming soon!
