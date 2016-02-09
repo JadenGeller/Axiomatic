@@ -11,7 +11,7 @@ import Gluey
 /// A logic `System`, defined by a collection of `Clauses`, that provides a mechanism for querying
 /// to learn facts about the system.
 public struct System<Atom: Hashable> {
-    private let clauses: [Functor<Atom> : [Clause<Atom>]]
+    private var clauses: [Functor<Atom> : [Clause<Atom>]]
     
     /// Constructs a `System` from a sequence of `Clause`s.
     public init<S: SequenceType where S.Generator.Element == Clause<Atom>>(clauses: S) {
@@ -23,6 +23,16 @@ public struct System<Atom: Hashable> {
         let nonUniqueClauses = clauses[functor] ?? []
         let context = CopyContext()
         return nonUniqueClauses.lazy.map { Clause.copy($0, withContext: context) }
+    }
+}
+
+extension System {
+    /// Adds a new clause to the system.
+    public mutating func declare(clause: Clause<Atom>) {
+        let functor = clause.head.functor
+        var functorClauses = clauses[functor] ?? []
+        functorClauses.append(clause)
+        clauses[functor] = functorClauses
     }
 }
 
