@@ -1,0 +1,220 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Predicate"
+- "=="
+provides-nominal:
+- "V9Axiomatic9Predicate"
+provides-member:
+- ["V9Axiomatic9Predicate", ""]
+- ["V9Axiomatic9Predicate", "arity"]
+provides-dynamic-lookup:
+depends-top-level:
+- "Equatable"
+- !private "print"
+- "Int"
+- !private "FloatLiteralType"
+- !private "&&"
+- !private "UnificationError"
+- "Predicate"
+- "String"
+- "Term"
+- !private "IntegerLiteralType"
+- "CopyContext"
+- !private ">"
+- "=="
+- !private "StringLiteralType"
+- !private "UnicodeScalarType"
+- "ContextCopyable"
+- "CustomStringConvertible"
+- "Unifiable"
+- !private "zip"
+- "Hashable"
+- "Bool"
+depends-member:
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Sb", "deinit"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- !private ["Vs9Character", "deinit"]
+- !private ["Ps10Comparable", "init"]
+- !private ["P5Gluey15ContextCopyable", "Predicate"]
+- !private ["P5Gluey15ContextCopyable", "String"]
+- !private ["P5Gluey15ContextCopyable", "Term"]
+- !private ["P5Gluey15ContextCopyable", "UnificationError"]
+- !private ["P5Gluey15ContextCopyable", "arguments"]
+- !private ["P5Gluey15ContextCopyable", "arity"]
+- ["P5Gluey15ContextCopyable", "attempt"]
+- ["P5Gluey15ContextCopyable", "copy"]
+- ["P5Gluey15ContextCopyable", "description"]
+- !private ["P5Gluey15ContextCopyable", "name"]
+- !private ["P5Gluey15ContextCopyable", "print"]
+- ["P5Gluey15ContextCopyable", "unify"]
+- !private ["P5Gluey15ContextCopyable", "zip"]
+- ["P5Gluey15ContextCopyable", ""]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "Predicate"]
+- !private ["Ps23CustomStringConvertible", "String"]
+- !private ["Ps23CustomStringConvertible", "Term"]
+- !private ["Ps23CustomStringConvertible", "UnificationError"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "arguments"]
+- !private ["Ps23CustomStringConvertible", "arity"]
+- ["Ps23CustomStringConvertible", "attempt"]
+- ["Ps23CustomStringConvertible", "copy"]
+- ["Ps23CustomStringConvertible", "description"]
+- !private ["Ps23CustomStringConvertible", "name"]
+- !private ["Ps23CustomStringConvertible", "print"]
+- ["Ps23CustomStringConvertible", "unify"]
+- !private ["Ps23CustomStringConvertible", "zip"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Sd", "deinit"]
+- !private ["Ps9Equatable", "Predicate"]
+- !private ["Ps9Equatable", "String"]
+- !private ["Ps9Equatable", "Term"]
+- !private ["Ps9Equatable", "UnificationError"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "arguments"]
+- !private ["Ps9Equatable", "arity"]
+- ["Ps9Equatable", "attempt"]
+- ["Ps9Equatable", "copy"]
+- ["Ps9Equatable", "description"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "name"]
+- !private ["Ps9Equatable", "print"]
+- ["Ps9Equatable", "unify"]
+- !private ["Ps9Equatable", "zip"]
+- ["Ps9Equatable", ""]
+- !private ["Ps9ErrorType", "init"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["Sf", "deinit"]
+- !private ["Ps13GeneratorType", "Element"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Si", "deinit"]
+- !private ["Vs5Int16", "deinit"]
+- !private ["Vs5Int32", "deinit"]
+- !private ["Vs5Int64", "deinit"]
+- !private ["Vs4Int8", "deinit"]
+- !private ["Ps14MirrorPathType", "init"]
+- !private ["Ps16OutputStreamType", "init"]
+- ["V9Axiomatic9Predicate", "Atom"]
+- ["V9Axiomatic9Predicate", "CopyContext"]
+- ["V9Axiomatic9Predicate", "Int"]
+- ["V9Axiomatic9Predicate", "Predicate"]
+- ["V9Axiomatic9Predicate", "String"]
+- ["V9Axiomatic9Predicate", "Term"]
+- !private ["V9Axiomatic9Predicate", "UnificationError"]
+- !private ["V9Axiomatic9Predicate", "arguments"]
+- ["V9Axiomatic9Predicate", "arity"]
+- ["V9Axiomatic9Predicate", "attempt"]
+- ["V9Axiomatic9Predicate", "copy"]
+- ["V9Axiomatic9Predicate", "deinit"]
+- ["V9Axiomatic9Predicate", "description"]
+- ["V9Axiomatic9Predicate", "init"]
+- ["V9Axiomatic9Predicate", "name"]
+- !private ["V9Axiomatic9Predicate", "print"]
+- ["V9Axiomatic9Predicate", "unify"]
+- !private ["V9Axiomatic9Predicate", "zip"]
+- !private ["Ps12SequenceType", "Generator"]
+- !private ["Ps12SequenceType", "forEach"]
+- !private ["Ps12SequenceType", "reduce"]
+- !private ["Ps10Streamable", "init"]
+- !private ["SS", "init"]
+- !private ["Ps30StringInterpolationConvertible", "init"]
+- !private ["Ps24StringLiteralConvertible", "init"]
+- !private ["Su", "deinit"]
+- !private ["Vs6UInt16", "deinit"]
+- !private ["Vs6UInt32", "deinit"]
+- !private ["Vs6UInt64", "deinit"]
+- !private ["Vs5UInt8", "deinit"]
+- !private ["Sc", "deinit"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "init"]
+- !private ["P5Gluey9Unifiable", "Predicate"]
+- !private ["P5Gluey9Unifiable", "String"]
+- !private ["P5Gluey9Unifiable", "Term"]
+- !private ["P5Gluey9Unifiable", "UnificationError"]
+- !private ["P5Gluey9Unifiable", "arguments"]
+- !private ["P5Gluey9Unifiable", "arity"]
+- ["P5Gluey9Unifiable", "attempt"]
+- ["P5Gluey9Unifiable", "copy"]
+- ["P5Gluey9Unifiable", "description"]
+- !private ["P5Gluey9Unifiable", "name"]
+- !private ["P5Gluey9Unifiable", "print"]
+- ["P5Gluey9Unifiable", "unify"]
+- !private ["P5Gluey9Unifiable", "zip"]
+- ["P5Gluey9Unifiable", ""]
+- !private ["V5Gluey16UnificationError", "init"]
+- !private ["Vs13Zip2Generator", "Element"]
+- !private ["Vs12Zip2Sequence", "Generator"]
+- !private ["Vs12Zip2Sequence", "forEach"]
+- !private ["Vs12Zip2Sequence", "reduce"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "init"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "init"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "init"]
+- !private ["Ps12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["Ps12_Reflectable", "init"]
+depends-nominal:
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- !private "Vs9Character"
+- !private "Ps10Comparable"
+- "P5Gluey15ContextCopyable"
+- !private "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- !private "Sd"
+- "Ps9Equatable"
+- !private "Ps9ErrorType"
+- !private "Ps41ExtendedGraphemeClusterLiteralConvertible"
+- !private "Sf"
+- !private "Ps13GeneratorType"
+- !private "Ps8Hashable"
+- !private "Si"
+- !private "Vs5Int16"
+- !private "Vs5Int32"
+- !private "Vs5Int64"
+- !private "Vs4Int8"
+- !private "Ps14MirrorPathType"
+- !private "Ps16OutputStreamType"
+- "V9Axiomatic9Predicate"
+- !private "Ps12SequenceType"
+- !private "Ps10Streamable"
+- !private "SS"
+- !private "Ps30StringInterpolationConvertible"
+- !private "Ps24StringLiteralConvertible"
+- !private "Su"
+- !private "Vs6UInt16"
+- !private "Vs6UInt32"
+- !private "Vs6UInt64"
+- !private "Vs5UInt8"
+- !private "Sc"
+- !private "Ps31UnicodeScalarLiteralConvertible"
+- "P5Gluey9Unifiable"
+- !private "V5Gluey16UnificationError"
+- !private "Vs13Zip2Generator"
+- !private "Vs12Zip2Sequence"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- !private "Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible"
+- !private "Ps32_BuiltinStringLiteralConvertible"
+- !private "Ps37_BuiltinUTF16StringLiteralConvertible"
+- !private "Ps39_BuiltinUnicodeScalarLiteralConvertible"
+- !private "Ps12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/UnicodeShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/RuntimeStubs.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/SwiftStdint.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/SwiftStddef.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/RuntimeShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/LibcShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/RefCount.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/HeapObject.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/GlobalObjects.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/FoundationShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/CoreFoundationShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/module.map"
+- "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.swiftmodule"
+interface-hash: "34a8924e1b42bd471048a42b90d0befc"

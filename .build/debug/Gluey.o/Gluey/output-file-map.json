@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/master.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Binding.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Binding.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Binding.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Binding~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Binding.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/ContextCopyable.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/ContextCopyable.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/ContextCopyable.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/ContextCopyable~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/ContextCopyable.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/DriedGlue.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/DriedGlue.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/DriedGlue.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/DriedGlue~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/DriedGlue.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Glue.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Glue.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Glue.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Glue~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Glue.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Unifiable.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Unifiable.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Unifiable.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Unifiable~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/Unifiable.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/UnifiableType.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/UnifiableType.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnifiableType.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/UnifiableType~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/UnifiableType.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/UnificationError.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/UnificationError.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnificationError.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/UnificationError~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey/UnificationError.swiftdeps"
+  }
+}

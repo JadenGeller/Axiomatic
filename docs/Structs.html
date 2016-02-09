@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Structs  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Structs  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Structs  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions/==(_:_:).html">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions/==(_:_:).html">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Clause.html">Clause</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Functor.html">Functor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/System.html">System</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Term.html">Term</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Structs</h1>
+            <p>The following structs are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Axiomatic6Clause"></a>
+                    <a name="//apple_ref/swift/Struct/Clause" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Axiomatic6Clause">Clause</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A statement whose <code>head</code> is true given that its <code>body</code> is true. When the <code>body</code> is empty,
+a clause is commonly called a <q>fact</q>. Otherwise, it is called a <q>rule</q>. <code>Clause</code> is often
+used with unification variables such that conditional truths can be expressed, such as
+<code>grandparent(A, B) :- parent(A, X), parent(X, B)</code>.</p>
+
+                        <a href="Structs/Clause.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Clause</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="p">:</span> <span class="kt">Hashable</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Axiomatic4Term"></a>
+                    <a name="//apple_ref/swift/Struct/Term" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Axiomatic4Term">Term</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The data type used to represent atoms and compound terms. Takes the form <code>bar</code> or <code>foo(bazz, buzz)</code> for any arity.
+Note that an atom is just a special case of a compound term with 0 arguments.</p>
+
+                        <a href="Structs/Term.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="p">:</span> <span class="kt">Hashable</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Axiomatic6System"></a>
+                    <a name="//apple_ref/swift/Struct/System" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Axiomatic6System">System</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A logic <code>System</code>, defined by a collection of <code>Clauses</code>, that provides a mechanism for querying
+to learn facts about the system.</p>
+
+                        <a href="Structs/System.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">System</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="p">:</span> <span class="kt">Hashable</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Axiomatic7Functor"></a>
+                    <a name="//apple_ref/swift/Struct/Functor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Axiomatic7Functor">Functor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The name-arity signature of a <code><a href="Structs/Term.html">Term</a></code>. Defines a class of <code><a href="Structs/Term.html">Term</a></code>s that can potentially
+be unified with each other.</p>
+
+                        <a href="Structs/Functor.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Functor</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="p">:</span> <span class="kt">Hashable</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-02-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

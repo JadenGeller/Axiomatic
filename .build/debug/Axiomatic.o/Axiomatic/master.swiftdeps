@@ -1,0 +1,9 @@
+version: "Apple Swift version 2.2-dev (LLVM 3ebdbb2c7e, Clang f66c5bb67b, Swift 17fe37d715)"
+options: "ec734f25fb70bfeb120c058357d5e1e7"
+build_time: [508351892, 944132000]
+inputs:
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Clause.swift": !dirty [508348405, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Functor.swift": !dirty [507789100, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/System.swift": !dirty [508349331, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Term.swift": !dirty [508350186, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Utility.swift": !dirty [506509966, 0]

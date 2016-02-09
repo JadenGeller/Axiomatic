@@ -1,0 +1,29 @@
+client:
+  name: swift-build
+
+tools: {}
+
+targets:
+  "": [<Axiomatic>]
+  Axiomatic: [<Axiomatic>]
+
+commands:
+  <Axiomatic-swiftc>:
+    tool: swift-compiler
+    executable: "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/bin/swiftc"
+    inputs: ["/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Clause.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Functor.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Sources/System.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Term.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Utility.swift"]
+    outputs: ["<Axiomatic-swiftc>","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.swiftmodule","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Clause.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Functor.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/System.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Term.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Utility.swift.o"]
+    module-name: "Axiomatic"
+    module-output-path: "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.swiftmodule"
+    is-library: true
+    sources: ["/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Clause.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Functor.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Sources/System.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Term.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Utility.swift"]
+    objects: ["/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Clause.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Functor.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/System.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Term.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Utility.swift.o"]
+    import-paths: ["/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug"]
+    temps-path: "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic"
+    other-args: ["-j8","-Onone","-g","-target","x86_64-apple-macosx10.10","-enable-testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk","-I","/usr/local/include"]
+  <Axiomatic>:
+    tool: shell
+    inputs: ["<Axiomatic-swiftc>","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Clause.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Functor.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/System.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Term.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Utility.swift.o"]
+    outputs: ["<Axiomatic>","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.a"]
+    args: ["/bin/sh","-c","rm -f '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.a'; ar cr '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.a' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Clause.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Functor.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/System.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Term.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Utility.swift.o'"]
+    description: "Linking Library:  .build/debug/Axiomatic.a"

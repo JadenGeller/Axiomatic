@@ -1,0 +1,29 @@
+client:
+  name: swift-build
+
+tools: {}
+
+targets:
+  "": [<Gluey>]
+  Gluey: [<Gluey>]
+
+commands:
+  <Gluey-swiftc>:
+    tool: swift-compiler
+    executable: "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/bin/swiftc"
+    inputs: ["/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Binding.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/ContextCopyable.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/DriedGlue.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Glue.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Unifiable.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/UnifiableType.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/UnificationError.swift"]
+    outputs: ["<Gluey-swiftc>","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.swiftmodule","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Binding.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/ContextCopyable.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/DriedGlue.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Glue.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Unifiable.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnifiableType.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnificationError.swift.o"]
+    module-name: "Gluey"
+    module-output-path: "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.swiftmodule"
+    is-library: true
+    sources: ["/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Binding.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/ContextCopyable.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/DriedGlue.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Glue.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Unifiable.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/UnifiableType.swift","/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/UnificationError.swift"]
+    objects: ["/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Binding.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/ContextCopyable.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/DriedGlue.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Glue.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Unifiable.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnifiableType.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnificationError.swift.o"]
+    import-paths: ["/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug"]
+    temps-path: "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Gluey"
+    other-args: ["-j8","-Onone","-g","-target","x86_64-apple-macosx10.10","-enable-testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk","-I","/usr/local/include"]
+  <Gluey>:
+    tool: shell
+    inputs: ["<Gluey-swiftc>","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Binding.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/ContextCopyable.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/DriedGlue.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Glue.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Unifiable.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnifiableType.swift.o","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnificationError.swift.o"]
+    outputs: ["<Gluey>","/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.a"]
+    args: ["/bin/sh","-c","rm -f '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.a'; ar cr '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.a' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Binding.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/ContextCopyable.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/DriedGlue.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Glue.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/Unifiable.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnifiableType.swift.o' '/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Gluey.o/Sources/UnificationError.swift.o'"]
+    description: "Linking Library:  .build/debug/Gluey.a"

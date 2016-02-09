@@ -1,0 +1,11 @@
+version: "Apple Swift version 2.2-dev (LLVM 3ebdbb2c7e, Clang f66c5bb67b, Swift 17fe37d715)"
+options: "f9ac0d631de2fb1b66996abd768a8464"
+build_time: [508351892, 433231000]
+inputs:
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Binding.swift": [508351891, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/ContextCopyable.swift": [508351891, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/DriedGlue.swift": [508351891, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Glue.swift": [508351891, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/Unifiable.swift": [508351891, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/UnifiableType.swift": [508351891, 0]
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Packages/Gluey-1.6.0/Sources/UnificationError.swift": [508351891, 0]

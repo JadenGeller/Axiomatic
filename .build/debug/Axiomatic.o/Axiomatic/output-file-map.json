@@ -1,0 +1,35 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/master.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Clause.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Clause.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Clause.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Clause~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Clause.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Functor.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Functor.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Functor.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Functor~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Functor.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/System.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/System.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/System.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/System~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/System.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Term.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Term.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Term.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Term~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Term.swiftdeps"
+  },
+  "/Users/jadengeller/Documents/Packages/Axiomatic/Sources/Utility.swift": {
+    "dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Utility.d",
+    "object": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Sources/Utility.swift.o",
+    "swiftmodule": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Utility~partial.swiftmodule",
+    "swift-dependencies": "/Users/jadengeller/Documents/Packages/Axiomatic/.build/debug/Axiomatic.o/Axiomatic/Utility.swiftdeps"
+  }
+}

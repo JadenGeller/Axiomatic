@@ -1,0 +1,101 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "DriedGlue"
+provides-nominal:
+- "V5Gluey9DriedGlue"
+provides-member:
+- ["V5Gluey9DriedGlue", ""]
+- ["C5Gluey4Glue", ""]
+- ["C5Gluey4Glue", "restore"]
+provides-dynamic-lookup:
+depends-top-level:
+- "Array"
+- "Set"
+- "DriedGlue"
+- "Glue"
+- "Equatable"
+- "Binding"
+depends-member:
+- !private ["Ps9AnyObject", "Glue"]
+- !private ["Ps9AnyObject", "bindings"]
+- !private ["Ps9AnyObject", "glue"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "value"]
+- ["Ps23ArrayLiteralConvertible", "Element"]
+- !private ["Ps23ArrayLiteralConvertible", "Generator"]
+- ["C5Gluey7Binding", "deinit"]
+- !private ["C5Gluey7Binding", "glue"]
+- ["Ps14CollectionType", "Element"]
+- !private ["Ps14CollectionType", "Generator"]
+- !private ["P5Gluey15ContextCopyable", "glue"]
+- ["Ps28CustomDebugStringConvertible", "Element"]
+- !private ["Ps28CustomDebugStringConvertible", "Generator"]
+- ["Ps23CustomStringConvertible", "Element"]
+- !private ["Ps23CustomStringConvertible", "Generator"]
+- !private ["Ps23CustomStringConvertible", "glue"]
+- ["V5Gluey9DriedGlue", "Binding"]
+- ["V5Gluey9DriedGlue", "Element"]
+- ["V5Gluey9DriedGlue", "Glue"]
+- ["V5Gluey9DriedGlue", "Set"]
+- ["V5Gluey9DriedGlue", "bindings"]
+- ["V5Gluey9DriedGlue", "init"]
+- ["V5Gluey9DriedGlue", "value"]
+- ["Ps9Equatable", "Element"]
+- !private ["Ps9Equatable", "Generator"]
+- !private ["Ps9Equatable", "glue"]
+- !private ["Ps13GeneratorType", "Element"]
+- ["C5Gluey4Glue", "DriedGlue"]
+- ["C5Gluey4Glue", "Element"]
+- !private ["C5Gluey4Glue", "Glue"]
+- !private ["C5Gluey4Glue", "bindings"]
+- !private ["C5Gluey4Glue", "init"]
+- ["C5Gluey4Glue", "restore"]
+- !private ["C5Gluey4Glue", "value"]
+- ["Ps8Hashable", "Element"]
+- !private ["Ps8Hashable", "Generator"]
+- !private ["Ps8Hashable", "glue"]
+- ["Ps9Indexable", "Element"]
+- !private ["Ps9Indexable", "Generator"]
+- ["Ps12SequenceType", "Element"]
+- !private ["Ps12SequenceType", "Generator"]
+- ["Vs3Set", "Element"]
+- !private ["Vs3Set", "Generator"]
+- !private ["Vs12SetGenerator", "Element"]
+- !private ["P5Gluey13UnifiableType", "glue"]
+- ["Ps12_Reflectable", "Element"]
+- !private ["Ps12_Reflectable", "Generator"]
+depends-nominal:
+- !private "Ps9AnyObject"
+- "Ps23ArrayLiteralConvertible"
+- "C5Gluey7Binding"
+- "Ps14CollectionType"
+- !private "P5Gluey15ContextCopyable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- "V5Gluey9DriedGlue"
+- "Ps9Equatable"
+- !private "Ps13GeneratorType"
+- "C5Gluey4Glue"
+- "Ps8Hashable"
+- "Ps9Indexable"
+- "Ps12SequenceType"
+- "Vs3Set"
+- !private "Vs12SetGenerator"
+- !private "P5Gluey13UnifiableType"
+- "Ps12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/UnicodeShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/RuntimeStubs.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/SwiftStdint.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/SwiftStddef.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/RuntimeShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/LibcShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/RefCount.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/HeapObject.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/GlobalObjects.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/FoundationShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/CoreFoundationShims.h"
+- "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-22-a.xctoolchain/usr/lib/swift/shims/module.map"
+interface-hash: "40abc1d10af914ec649ed103a61afe07"
