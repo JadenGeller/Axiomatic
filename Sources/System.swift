@@ -6,9 +6,6 @@
 //  Copyright © 2016 Jaden Geller. All rights reserved.
 //
 
-/// Set to `true` to enable trace mode.
-private let DEBUG = false
-
 import Gluey
 
 /// A logic `System`, defined by a collection of `Clauses`, that provides a mechanism for querying
@@ -40,33 +37,33 @@ extension System {
     
     /// Attempts to unify `goal` with the known clauses in the system calling `onMatch` each time it succeeds to unify.
     public func enumerateMatches(goal: Term<Atom>, onMatch: () throws -> ()) throws {
-        #if debug
+        #if TRACE
             print("GOAL: \(goal)")
         #endif
         for clause in uniqueClausesWithFunctor(goal.functor) {
-            #if debug
+            #if TRACE
             print("ATTEMPT: \(clause)")
             #endif
             do {
                 try Term.attempt(goal) {
                     try Term.unify(goal, clause.head)
-                    #if debug
+                    #if TRACE
                     print("CALL: \(clause.head)")
                     #endif
                     try self.enumerateMatches(clause.body) {
-                        #if debug
+                        #if TRACE
                         print("SUCCESS: \(clause.head)")
                         #endif
                         try onMatch()
                         throw UnificationError("CONTINUE") // We need a way to end early.
                     }
                 }
-                #if debug
+                #if TRACE
                 print("DONE")
                 #endif
                 return
             } catch let error as UnificationError {
-                #if debug
+                #if TRACE
                 print("BACKTRACKING: \(error)")
                 #endif
                 continue
