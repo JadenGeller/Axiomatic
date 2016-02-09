@@ -47,8 +47,6 @@ public func ==<Atom: Hashable>(lhs: Term<Atom>, rhs: Term<Atom>) -> Bool {
 extension Term: Unifiable {
     public static func unify(lhs: Term, _ rhs: Term) throws {
         guard lhs.name == rhs.name else {
-            print("LHS", lhs)
-            print("RHS", rhs)
             throw UnificationError("Unable to unify functors with differing names \(lhs.name) and \(rhs.name).")
         }
         guard lhs.arity == rhs.arity else {

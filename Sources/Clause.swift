@@ -74,6 +74,36 @@ extension Clause {
     }
 }
 
+extension Clause {
+    public init(build: () -> Term<Atom>) {
+        self.init(fact: build())
+    }
+    
+    public init(build: Binding<Term<Atom>> -> Term<Atom>) {
+        self.init(fact: build(Binding()))
+    }
+    
+    public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
+        self.init(fact: build(Binding(), Binding()))
+    }
+    
+    public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
+        self.init(fact: build(Binding(), Binding(), Binding()))
+    }
+    
+    public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
+        self.init(fact: build(Binding(), Binding(), Binding(), Binding()))
+    }
+    
+    public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
+        self.init(fact: build(Binding(), Binding(), Binding(), Binding(), Binding()))
+    }
+    
+    public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
+        self.init(fact: build(Binding(), Binding(), Binding(), Binding(), Binding(), Binding()))
+    }
+}
+
 extension Clause: ContextCopyable {
     public static func copy(this: Clause, withContext context: CopyContext) -> Clause {
         return Clause(head: Term.copy(this.head, withContext: context), body: this.body.map{ Term.copy($0, withContext: context) })

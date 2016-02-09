@@ -24,7 +24,8 @@ public struct System<Atom: Hashable> {
 
 extension System {
     public func enumerateMatches(goals: [Term<Atom>], onMatch: () throws -> ()) throws {
-        let satisfyAll = goals.reduce(onMatch) { lambda, predicate in { try self.enumerateMatches(predicate, onMatch: lambda) } }
+        // Reverse first since reduce is right-to-left
+        let satisfyAll = goals.reverse().reduce(onMatch) { lambda, predicate in { try self.enumerateMatches(predicate, onMatch: lambda) } }
         try satisfyAll()
     }
     

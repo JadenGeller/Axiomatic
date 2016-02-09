@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D6D53291C4DE85F006F38F1 /* Clause.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D53251C4DE85F006F38F1 /* Clause.swift */; };
 		4D6D532A1C4DE85F006F38F1 /* Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D53261C4DE85F006F38F1 /* Functor.swift */; };
-		4D6D532B1C4DE85F006F38F1 /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D53271C4DE85F006F38F1 /* Predicate.swift */; };
+		4D6D532B1C4DE85F006F38F1 /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D53271C4DE85F006F38F1 /* Term.swift */; };
 		4D6D532C1C4DE85F006F38F1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D53281C4DE85F006F38F1 /* System.swift */; };
 		4D6D532E1C4E08A1006F38F1 /* SystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D532D1C4E08A1006F38F1 /* SystemTests.swift */; };
 		4D6D53501C4E3589006F38F1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D534F1C4E3589006F38F1 /* Utility.swift */; };
@@ -46,7 +46,7 @@
 /* Begin PBXFileReference section */
 		4D6D53251C4DE85F006F38F1 /* Clause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clause.swift; path = ../../Sources/Clause.swift; sourceTree = "<group>"; };
 		4D6D53261C4DE85F006F38F1 /* Functor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Functor.swift; path = ../../Sources/Functor.swift; sourceTree = "<group>"; };
-		4D6D53271C4DE85F006F38F1 /* Predicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Predicate.swift; path = ../../Sources/Predicate.swift; sourceTree = "<group>"; };
+		4D6D53271C4DE85F006F38F1 /* Term.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Term.swift; path = ../../Sources/Term.swift; sourceTree = "<group>"; };
 		4D6D53281C4DE85F006F38F1 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../Sources/System.swift; sourceTree = "<group>"; };
 		4D6D532D1C4E08A1006F38F1 /* SystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemTests.swift; sourceTree = "<group>"; };
 		4D6D534F1C4E3589006F38F1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = ../../Sources/Utility.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				4DC7104B1C4D061D00834A0E /* Info.plist */,
-				4D6D53271C4DE85F006F38F1 /* Predicate.swift */,
+				4D6D53271C4DE85F006F38F1 /* Term.swift */,
 				4D6D53251C4DE85F006F38F1 /* Clause.swift */,
 				4D6D53261C4DE85F006F38F1 /* Functor.swift */,
 				4D6D53281C4DE85F006F38F1 /* System.swift */,
@@ -263,7 +263,7 @@
 			files = (
 				4D6D53501C4E3589006F38F1 /* Utility.swift in Sources */,
 				4D6D53291C4DE85F006F38F1 /* Clause.swift in Sources */,
-				4D6D532B1C4DE85F006F38F1 /* Predicate.swift in Sources */,
+				4D6D532B1C4DE85F006F38F1 /* Term.swift in Sources */,
 				4D6D532C1C4DE85F006F38F1 /* System.swift in Sources */,
 				4D6D532A1C4DE85F006F38F1 /* Functor.swift in Sources */,
 			);

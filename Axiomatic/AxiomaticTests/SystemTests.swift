@@ -1,4 +1,4 @@
-//
+ //
 //  SystemTests.swift
 //  Axiomatic
 //
@@ -149,34 +149,60 @@ class SystemTests: XCTestCase {
         XCTAssertEqual(1, count)
     }
     
-//    func testTypeSystem() {
-//        let system = System(clauses: [
-//            // square :: Int -> Int
-//            Clause(fact: Term(name: "binding", arguments: [
-//                .Constant(Term(atom: "square")),
-//                .Constant(Term(name: "function", arguments: [
-//                    .Constant(Term(atom: "Int")),
-//                    .Constant(Term(atom: "Int"))
-//                ]))
-//            ])),
-//            // sqrt :: Int -> Int
-//            Clause(fact: Term(name: "binding", arguments: [
-//                .Constant(Term(atom: "sqrt")),
-//                .Constant(Term(name: "function", arguments: [
-//                    .Constant(Term(atom: "Int")),
-//                    .Constant(Term(atom: "Int"))
-//                ]))
-//            ])),
-//            // count :: Array a -> Int
-//            Clause(fact: Term(name: "binding", arguments: [
-//                .Constant(Term(atom: "count")),
-//                .Constant(Term(name: "function", arguments: [
-//                    .Constant(Term(name: "Array", arguments: [.Variable(A)])),
-//                    .Constant(Term(atom: "Int"))
-//                ]))
-//            ])),
-//        ])
-//    }
+    func testFunctionTypeUnifications() {
+        let system = System(clauses: [
+            // square :: Int -> Int
+            Clause(fact: Term(name: "binding", arguments: [
+                .Constant(Term(atom: "square")),
+                .Constant(Term(name: "function", arguments: [
+                    .Constant(Term(atom: "Int")),
+                    .Constant(Term(atom: "Int"))
+                ]))
+            ])),
+            // sqrt :: Int -> Int
+            Clause(fact: Term(name: "binding", arguments: [
+                .Constant(Term(atom: "sqrt")),
+                .Constant(Term(name: "function", arguments: [
+                    .Constant(Term(atom: "Int")),
+                    .Constant(Term(atom: "Int"))
+                ]))
+            ])),
+            // compose = f -> g -> x -> f (g x)
+            Clause { A, B, C in (
+                fact: Term(name: "binding", arguments: [
+                    .Constant(Term(atom: "compose")),
+                    .Constant(Term(name: "function", arguments: [
+                        .Constant(Term(name: "function", arguments: [.Variable(B), .Variable(C)])),
+                        .Constant(Term(name: "function", arguments: [
+                            .Constant(Term(name: "function", arguments: [.Variable(A), .Variable(B)])),
+                            .Constant(Term(name: "function", arguments: [.Variable(A), .Variable(C)]))
+                        ]))
+                    ]))
+                ])
+            )},
+            Clause { Sqrt, Square, Abs in (
+                rule: Term(name: "binding", arguments: [.Constant(Term(atom: "abs")), .Variable(Abs)]),
+                conditions: [
+                    Term(name: "binding", arguments: [.Constant(Term(atom: "sqrt")), .Variable(Sqrt)]),
+                    Term(name: "binding", arguments: [.Constant(Term(atom: "square")), .Variable(Square)]),
+                    Term(name: "binding", arguments: [.Constant(Term(atom: "compose")), .Constant(Term(name: "function", arguments: [
+                        .Variable(Sqrt), .Constant(Term(name: "function", arguments: [
+                            .Variable(Square),
+                            .Variable(Abs)
+                        ]))
+                    ]))])
+                ])
+            }
+        ])
+        
+        let Abs = Binding<Term<String>>()
+        var count = 0
+        _ = try? system.enumerateMatches(Term(name: "binding", arguments: [.Constant(Term(atom: "abs")), .Variable(Abs)])) {
+            count++
+            XCTAssertEqual(Term(name: "function", arguments: [.Constant(Term(atom: "Int")), .Constant(Term(atom: "Int"))]), Abs.value)
+        }
+        XCTAssertEqual(1, count)
+    }
 }
 
 
