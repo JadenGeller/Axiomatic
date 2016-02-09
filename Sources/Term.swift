@@ -8,11 +8,16 @@
 
 import Gluey
 
+/// The data type used to represent atoms and compound terms. Takes the form `bar` or `foo(bazz, buzz)` for any arity.
+/// Note that an atom is just a special case of a compound term with 0 arguments.
 public struct Term<Atom: Hashable> {
+    /// The name of the term
     public var name: Atom
-    public var arguments: [Value<Term<Atom>>]
     
-    public init(name: Atom, arguments: [Value<Term<Atom>>]) {
+    /// The arguments to the term, which are also terms themselves (except wrapped in a `Unifiable` wrapper
+    public var arguments: [Unifiable<Term<Atom>>]
+    
+    public init(name: Atom, arguments: [Unifiable<Term<Atom>>]) {
         self.name = name
         self.arguments = arguments
     }
@@ -44,7 +49,7 @@ public func ==<Atom: Hashable>(lhs: Term<Atom>, rhs: Term<Atom>) -> Bool {
     }
 }
 
-extension Term: Unifiable {
+extension Term: UnifiableType {
     public static func unify(lhs: Term, _ rhs: Term) throws {
         guard lhs.name == rhs.name else {
             throw UnificationError("Unable to unify functors with differing names \(lhs.name) and \(rhs.name).")
@@ -52,12 +57,12 @@ extension Term: Unifiable {
         guard lhs.arity == rhs.arity else {
             throw UnificationError("Unable to unify functors with differing arity \(lhs.arity) and \(rhs.arity).")
         }
-        try zip(lhs.arguments, rhs.arguments).forEach(Value.unify)
+        try zip(lhs.arguments, rhs.arguments).forEach(Unifiable.unify)
     }
     
     public static func attempt(value: Term, _ action: () throws -> ()) throws {
-        let attemptAll = value.arguments.reduce(action) { (lambda: () throws -> (), term: Value) in
-            let newLambda = { try Value.attempt(term, lambda) }
+        let attemptAll = value.arguments.reduce(action) { (lambda: () throws -> (), term: Unifiable) in
+            let newLambda = { try Unifiable.attempt(term, lambda) }
             return newLambda
         }
         try attemptAll()
@@ -66,6 +71,6 @@ extension Term: Unifiable {
 
 extension Term: ContextCopyable {
     public static func copy(this: Term, withContext context: CopyContext) -> Term {
-        return Term(name: this.name, arguments: this.arguments.map{ Value<Term<Atom>>.copy($0, withContext: context) })
+        return Term(name: this.name, arguments: this.arguments.map{ Unifiable<Term<Atom>>.copy($0, withContext: context) })
     }
 }
