@@ -1,6 +1,6 @@
 # Axiomatic
 
-Axiomatic, built on top of [Gluey](https://github.com/JadenGeller/Gluey), defines tree-like unification types suitable for logic programming. Axiomatic is inspired by [Prolog](https://en.wikipedia.org/wiki/Prolog), and provides a subset of the functionality.
+Axiomatic, built on top of [Gluey](https://github.com/JadenGeller/Gluey), defines tree-like unification types suitable for logic programming. Axiomatic is inspired by [Prolog](https://en.wikipedia.org/wiki/Prolog), and provides a [subset](https://en.wikipedia.org/wiki/Horn_clause) of the functionality.
 
 An example:
 ```swift
