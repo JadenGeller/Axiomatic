@@ -21,9 +21,24 @@ We can easily query to find out who is the grandparent of Jaden, `?- grandparent
 
 Logic programming provides a really simple mechanism to find answers that can be easily deduced from a set of rules. There's no need to worry about enumerating all possible matches or even backtracking yourself as the framework handles it all.
 
-## Term
+## `Term`
 
-`Term` is the most basic logic programming type provided by Axiomatic. Essentially, it allows you define both atoms, like `jaden` and `green`, as well as complex compound terms, such as `awesome(jaden)` or `triangle(point(0, 0), point(1, 1), point(0, 1))`. Terms consist of a name as well as 0 or more arguments. Though the name must be a literal value, the arguments may be variables. For example, `color(X, purple)` says that *everything* is purple!
+Terms are the most basic logic programming type provided by Axiomatic. Essentially, it allows you define both atoms, like `jaden` and `green`, as well as complex compound terms, such as `awesome(jaden)` or `triangle(point(0, 0), point(1, 1), point(0, 1))`. Terms consist of a `name` as well as 0 or more `arguments`. Though the name must be a literal value, the arguments may be variables. For example, `color(X, purple)` says that *everything* is purple!
+
+```swift
+Term(name: "cool", arguments: [.Literal(Term(atom: "swift"))])  // cool(swift).
+Term(name: "cool", arguments: [.Literal(Term(atom: "prolog"))]) // cool(prolog).
+```
+
+Note that each argument of a `Term` is of type `Unifiable<Term>`, so you must specify if the argument is of the `Unifiable.Literal(Term)` or the `Unifiable.Variable(Binding)` case. As a reminder, a [`Binding`](https://github.com/jadengeller/gluey#binding) is a type defined by [Gluey](https://github.com/JadenGeller/Gluey) that can be unified with other instances of the same type. It is used to represent variables within this framework since they become bound together by the unification process and often two variables in seperate terms ought to refer to the same value.
+
+## `Clause`
+
+Clauses make statements of the form *X implies Y*. That *Y* is called the `head` of the clause, and it consists of a single term, while that *X* is called the `tail` of the clause, and it consists of a collection of terms that when true, imply the head is true. The special case in which the `tail` is empty is called a fact since it is unequivocally true. Otherwise, a clause is called a rule since the tail defines a sufficient condition upon which the head will be considered true.
+
+As a reminder, a `Clause` is formed entirely of our of `Term`s. The clause `happy(monkey) :- eating(monkey, banana)` for example, says that the term `happy(monkey)` is true whenever the term `eating(monkey, banana)`. It doesn't however imply the converse since there might exist another clause that says the monkey is also happy if it's eating rope swinging.
+
+Clauses can and often do utilize terms with variable arguments to specify conditional truths. This is done by setting an argument of 
 
 ```swift
 let system = System(clauses: [
