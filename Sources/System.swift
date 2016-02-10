@@ -25,18 +25,6 @@ public struct System<Atom: Hashable> {
     }
 }
 
-/* Probably unneeded
-extension System {
-    /// Adds a new clause to the system.
-    public mutating func declare(clause: Clause<Atom>) {
-        let functor = clause.head.functor
-        var functorClauses = clauses[functor] ?? []
-        functorClauses.append(clause)
-        clauses[functor] = functorClauses
-    }
-}
-*/
-
 public enum SystemException: UnificationErrorType {
     case Continue
     case Break
