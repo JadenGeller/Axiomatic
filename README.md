@@ -63,7 +63,7 @@ Now you're probably thinking, wow, that's a *really* wordy definition of such a 
 Once you've defined clauses to your hearts desire, you're ready to finally do something with them. `System` provides an initializer that takes in a sequence of clauses and build a logic system that can be easily queried. Let's check out what our grandparent example from above looks like as an Axiomatic system!
 
 ```swift
-let system = System(clauses: [
+let family = System(clauses: [
     // parent(matt, jaden).
     Clause(fact: Term(name: "parent", arguments: [
         .Literal(Term(atom: "Matt")),
@@ -105,51 +105,24 @@ let system = System(clauses: [
 ])
 ```
 
-UNDER CONSTRUCTION...
+Damn, that was long! Well, don't worry about that. As we said, syntactical consiseness was never a goal! So what did we just do? We defined a `System` of logical facts and rules named `family` that we can later query.
 
-Check out this example maybe?
+Notice that the initalizer for our grandparent rule took in a lambda? Well, Axiomatic defines these sorts of convenience initializer for `Clause` so you can define rules without having to seperately declare a `Binding`. Simply pass a lambda taking as many `Binding` arguments as you'd like (up to 6) into the initializer for `Clause`, and return the argument tuple it'd normally expect. If you're confused, no worries, this is just a syntactic convenience; you can still declare your bindings separately in the outer scope. 
 
+So how do we *query* this system? Well, there's a fancy little function called `enumerateMatches` just for this!
 ```swift
-let system = System(clauses: [
-    // male(jaden).
-    Clause(fact: Term(name: "male", arguments: [.Constant(Term(atom: "jaden"))])),
-    // male(matt).
-    Clause(fact: Term(name: "male", arguments: [.Constant(Term(atom: "matt"))])),
-    // female(tuesday).
-    Clause(fact: Term(name: "female", arguments: [.Constant(Term(atom: "tuesday"))])),
-    // female(kiley).
-    Clause(fact: Term(name: "female", arguments: [.Constant(Term(atom: "kiley"))])),
-    // father(Parent, Child) :- male(Parent), parent(Parent, Child).
-    Clause{ parent, child in (
-        rule: Term(name: "father", arguments: [.Variable(parent), .Variable(child)]),
-        requirements: [
-            Term(name: "male", arguments: [.Variable(parent)]),
-            Term(name: "parent", arguments: [.Variable(parent), .Variable(child)])
-        ]
-    ) },
-    // parent(tuesday, jaden).
-    Clause(fact: Term(name: "parent", arguments:
-        [.Constant(Term(atom: "tuesday")), .Constant(Term(atom: "jaden"))])),
-    // parent(matt, jaden).
-    Clause(fact: Term(name: "parent", arguments:
-        [.Constant(Term(atom: "matt")), .Constant(Term(atom: "jaden"))])),
-    // parent(matt, kiley).
-    Clause(fact: Term(name: "parent", arguments:
-        [.Constant(Term(atom: "matt")), .Constant(Term(atom: "kiley"))])),
-    // parent(tuesday, kiley).
-    Clause(fact: Term(name: "parent", arguments:
-        [.Constant(Term(atom: "tuesday")), .Constant(Term(atom: "kiley"))]))
-])
-
-var results: [String] = []
-let Child = Binding<Term<String>>()
-// father(matt, Child).
-try! system.enumerateMatches(Term(name: "father", arguments: [.Constant(Term(atom: "matt")), .Variable(Child)])) {
-    results.append(Child.value!.name)
+let G = Binding<Term<String>>()
+let query = Term(name: "grandparent", arguments: [.Variable(G), .Literal(Term(atom: "Jaden"))])
+try system.enumerateMatches(query) {
+    print(G) // -> Debbie -> Dennis -> Liz -> Mike
 }
-XCTAssertEqual(["jaden", "kiley"], results)
 ```
+Ta-dah! Pretty simple, huh? Notice that we had to mark call that function with a `try`. This is because our query may fail to unify at all. Futhermore, you're not guarenteed that every `Binding` will have a non-`nil` value inside of the callback. If the logical system doesn't place sufficient restrictions on a variable, it may be possible for it to be unified without finding an actual concrete value.
 
-Check out more examples [here](https://github.com/JadenGeller/Axiomatic/blob/master/Axiomatic/AxiomaticTests/SystemTests.swift)! And read documentation [here](http://jadengeller.github.io/Axiomatic/docs/index.html).
+By default, `enumerateMatches` will call the callback for each possible match. If you'd instead like to return after any given match, simply throw `SystemException.Break`, and the system will halt the unification process.
 
-More comprehensive README coming soon!
+You are not guarenteed that the unified state of the variables will remain after you return from the callback. As such, make sure to record any information you might need to know while *inside* the callback.
+
+## That's all folks!
+
+Hopefully this was a good introduction to logic programming and the Axiomatic framework. If you find yourself still confused, dig through the source code a bit, check out some of the [test cases]((https://github.com/JadenGeller/Axiomatic/blob/master/Axiomatic/AxiomaticTests/SystemTests.swift), and maybe read the [documentation](http://jadengeller.github.io/Axiomatic/docs/index.html). If you're still lost, feel free to tweet me! :)
