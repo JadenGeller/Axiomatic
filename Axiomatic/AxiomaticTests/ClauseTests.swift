@@ -29,7 +29,7 @@ class ClauseTests: XCTestCase {
         let a = Clause { binding in (
             rule: Term<Int>(name: 100, arguments: [.Variable(binding)]),
             conditions: [Term<Int>(name: 200, arguments: [
-                    .Constant(Term(name: 300, arguments: [.Variable(binding)]))
+                    .Literal(Term(name: 300, arguments: [.Variable(binding)]))
                 ])]
             )}
         

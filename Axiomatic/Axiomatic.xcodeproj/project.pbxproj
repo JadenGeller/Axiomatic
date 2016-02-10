@@ -13,12 +13,27 @@
 		4D6D532C1C4DE85F006F38F1 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D53281C4DE85F006F38F1 /* System.swift */; };
 		4D6D532E1C4E08A1006F38F1 /* SystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D532D1C4E08A1006F38F1 /* SystemTests.swift */; };
 		4D6D53501C4E3589006F38F1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D534F1C4E3589006F38F1 /* Utility.swift */; };
+		4DA70B511C6AD1A700426AE6 /* Gluey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA70B4E1C6AD1A200426AE6 /* Gluey.framework */; };
 		4DC710511C4D061D00834A0E /* Axiomatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC710461C4D061D00834A0E /* Axiomatic.framework */; };
 		4DC710561C4D061D00834A0E /* PredicateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC710551C4D061D00834A0E /* PredicateTests.swift */; };
 		4DD9ADC91C61305A00252595 /* ClauseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD9ADC81C61305A00252595 /* ClauseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4DA70B4D1C6AD1A200426AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DA70B481C6AD1A200426AE6 /* Gluey.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D9C71251C4CDA8C008C8726;
+			remoteInfo = Gluey;
+		};
+		4DA70B4F1C6AD1A200426AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DA70B481C6AD1A200426AE6 /* Gluey.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D9C712F1C4CDA8C008C8726;
+			remoteInfo = GlueyTests;
+		};
 		4DC710521C4D061D00834A0E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DC7103D1C4D061D00834A0E /* Project object */;
@@ -35,6 +50,7 @@
 		4D6D53281C4DE85F006F38F1 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../Sources/System.swift; sourceTree = "<group>"; };
 		4D6D532D1C4E08A1006F38F1 /* SystemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemTests.swift; sourceTree = "<group>"; };
 		4D6D534F1C4E3589006F38F1 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utility.swift; path = ../../Sources/Utility.swift; sourceTree = "<group>"; };
+		4DA70B481C6AD1A200426AE6 /* Gluey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Gluey.xcodeproj; path = "../Packages/Gluey-1.6.1/Gluey/Gluey.xcodeproj"; sourceTree = "<group>"; };
 		4DC710461C4D061D00834A0E /* Axiomatic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Axiomatic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC7104B1C4D061D00834A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DC710501C4D061D00834A0E /* AxiomaticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AxiomaticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA70B511C6AD1A700426AE6 /* Gluey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,9 +79,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DA70B491C6AD1A200426AE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DA70B4E1C6AD1A200426AE6 /* Gluey.framework */,
+				4DA70B501C6AD1A200426AE6 /* GlueyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4DC7103C1C4D061D00834A0E = {
 			isa = PBXGroup;
 			children = (
+				4DA70B481C6AD1A200426AE6 /* Gluey.xcodeproj */,
 				4DC710481C4D061D00834A0E /* Axiomatic */,
 				4DC710541C4D061D00834A0E /* AxiomaticTests */,
 				4DC710471C4D061D00834A0E /* Products */,
@@ -181,6 +208,12 @@
 			mainGroup = 4DC7103C1C4D061D00834A0E;
 			productRefGroup = 4DC710471C4D061D00834A0E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4DA70B491C6AD1A200426AE6 /* Products */;
+					ProjectRef = 4DA70B481C6AD1A200426AE6 /* Gluey.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4DC710451C4D061D00834A0E /* Axiomatic */,
@@ -188,6 +221,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4DA70B4E1C6AD1A200426AE6 /* Gluey.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Gluey.framework;
+			remoteRef = 4DA70B4D1C6AD1A200426AE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4DA70B501C6AD1A200426AE6 /* GlueyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GlueyTests.xctest;
+			remoteRef = 4DA70B4F1C6AD1A200426AE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4DC710441C4D061D00834A0E /* Resources */ = {
