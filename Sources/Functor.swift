@@ -16,7 +16,9 @@ extension Term {
 /// The name-arity signature of a `Term`. Defines a class of `Term`s that can potentially
 /// be unified with each other.
 public struct Functor<Atom: Hashable> {
+    /// The name.
     public let name: Atom
+    /// The number of arguments.
     public let arity: Int
 }
 
