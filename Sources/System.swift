@@ -25,8 +25,12 @@ public struct System<Atom: Hashable> {
     }
 }
 
+/// An exception thrown in the `enumerateMatches` callback that instructs whether the
+/// system ought to continue enumerating matches or break prematurely.
 public enum SystemException: UnificationErrorType {
+    /// Continue enumerating matches.
     case Continue
+    /// Break prematurely.
     case Break
 }
 
