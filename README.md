@@ -6,7 +6,7 @@ Axiomatic is a logic framework that, give declarations of facts and rules, provi
 
 Rather then asking you to write a step-by-step algorithm to solve a problem, [logic programming](https://en.wikipedia.org/wiki/Logic_programming) asks you to provide a set of facts and rules. For example, we can starting by giving the fact that grass is green `color(grass, green)` and the rule that green things are awesome `awesome(X) :- color(X, green)`, and then query whether grass is in fact awesome, `?- awesome(grass)`. Note that the order of "grass" and "green" are unimportant as long as we are internally consistent. Logic programming doesn't just let us ask yes or no questions though, we can ask it for all possible solutions that fit our set of constraints.
 
-Consider the following facts and rules:
+Consider the following facts and rules (represented as a Prolog program):
 ```prolog
 parent(matt, jaden).
 parent(tuesday, jaden).
