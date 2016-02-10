@@ -26,8 +26,8 @@ Logic programming provides a really simple mechanism to find answers that can be
 Terms is the most primitive logic type provided by Axiomatic. Essentially, it allows you define both atoms, like `jaden` and `green`, as well as complex compound terms, such as `awesome(jaden)` or `triangle(point(0, 0), point(1, 1), point(0, 1))`. Terms consist of a `name` as well as 0 or more `arguments`. Though the name must be a literal value, the arguments may be variables. For example, `color(X, purple)` says that *everything* is purple!
 
 ```swift
-Term(name: "cool", arguments: [.Literal(Term(atom: "swift"))])  // cool(swift).
-Term(name: "cool", arguments: [.Literal(Term(atom: "prolog"))]) // cool(prolog).
+let s = Term(name: "cool", arguments: [.Literal(Term(atom: "swift"))])  // cool(swift).
+let p = Term(name: "cool", arguments: [.Literal(Term(atom: "prolog"))]) // cool(prolog).
 ```
 
 Note that each argument of a `Term` is of type `Unifiable<Term>`, so you must specify if the argument is of the `Unifiable.Literal(Term)` or the `Unifiable.Variable(Binding)` case. As a reminder, a [`Binding`](https://github.com/jadengeller/gluey#binding) is a type defined by [Gluey](https://github.com/JadenGeller/Gluey) that can be unified with other instances of the same type. It is used to represent variables within this framework since they become bound together by the unification process and often two variables in seperate terms ought to refer to the same value.
@@ -39,6 +39,28 @@ Clauses make statements of the form *X implies Y*. That *Y* is called the `head`
 As a reminder, a `Clause` is formed entirely of our of `Term`s. The clause `happy(monkey) :- eating(monkey, banana)` for example, says that the term `happy(monkey)` is true whenever the term `eating(monkey, banana)`. It doesn't however imply the converse since there might exist another clause that says the monkey is also happy if it's eating rope swinging.
 
 Clauses can and often do utilize terms with variable arguments to specify conditional truths. This is done by declaring a [`Binding`](https://github.com/jadengeller/gluey#binding) and using it as a variable in one or more arguments in one or more terms of the clause. Note that it is illegal but unchecked to share the same `Binding` between multiple variables in separate clauses, and doing so will result in undefined behavior. 
+
+```swift
+// awesome(X) :- color(X, green).
+let x = Binding<Term<String>>()
+let c = Clause(
+     rule: Term(name: "awesome", arguments: [
+          .Variable(x)
+     ]),
+     conditions: [
+          Term(name: "color", arguments: [
+               .Variable(x),
+               .Literal(Term(atom: "green"))
+          ])
+     ]
+)
+```
+
+Now you're probably thinking, wow, that's a *really* wordy definition of such a simple Prolog query, and you're right. Axiomatic isn't intended to be used to build programs "out of the box", but rather it's intended to be used a base for programs that rely on logic. Further, it relatively easy and straightforward to provide an abstraction atop Axiomatic to make it suitable for specific use cases.
+
+## `System`
+
+Once you've defined `Clause`s to your hearts desire, you're ready to finally do something with them. `System` provides an initializer that takes in a sequence of `Clause`s and build a logic system that can be easily queried.
 
 ```swift
 let system = System(clauses: [
