@@ -56,44 +56,53 @@ extension System {
         #if TRACE
             print("GOAL: \(goal)")
         #endif
+        // Enumerate all potential matches
         for clause in uniqueClausesWithFunctor(goal.functor) {
             #if TRACE
             print("ATTEMPT: \(clause)")
             #endif
             do {
+                // For each match, attempt to unify, backtracking on failure
                 try Term.attempt(goal) {
                     try Term.unify(goal, clause.head)
                     #if TRACE
                     print("CALL: \(clause.head)")
                     #endif
+                    // If we're able to unify the head, attempt to unify the entire body
                     try self.enumerateMatches(clause.body) {
                         #if TRACE
                         print("SUCCESS: \(clause.head)")
                         #endif
                         
+                        // We've unfied a clause, so let's report it!
                         try onMatch()
                         throw SystemException.Continue
                     }
                 }
+                // We're out of possible clauses to unify, so I guess we're done.
                 #if TRACE
                 print("DONE")
                 #endif
                 return
             }
+            // Now that we've gotten that figured out, another round?
             catch let exception as SystemException {
                 switch exception {
                 case .Break:
                     #if TRACE
                         print("BREAK")
                     #endif
+                    // Nah bra
                     return
                 case .Continue:
                     #if TRACE
                         print("CONTINUING")
                     #endif
+                    // Most def
                     continue
                 }
             }
+            // Looks like that clause didn't work out, let's try the next...
             catch let error as UnificationError {
                 #if TRACE
                 print("BACKTRACKING: \(error)")
