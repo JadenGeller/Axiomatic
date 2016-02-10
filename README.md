@@ -63,7 +63,7 @@ Now you're probably thinking, wow, that's a *really* wordy definition of such a 
 Once you've defined clauses to your hearts desire, you're ready to finally do something with them. `System` provides an initializer that takes in a sequence of clauses and build a logic system that can be easily queried. Let's check out what our grandparent example from above looks like as an Axiomatic system!
 
 ```swift
-let family = System(clauses: [
+let system = System(clauses: [
     // parent(matt, jaden).
     Clause(fact: Term(name: "parent", arguments: [
         .Literal(Term(atom: "Matt")),
@@ -105,7 +105,7 @@ let family = System(clauses: [
 ])
 ```
 
-Damn, that was long! Well, don't worry about that. As we said, syntactical consiseness was never a goal! So what did we just do? We defined a `System` of logical facts and rules named `family` that we can later query.
+Damn, that was long! Well, don't worry about that. As we said, syntactical consiseness was never a goal! So what did we just do? We defined a `System` of logical facts and rules that we can later query.
 
 Notice that the initalizer for our grandparent rule took in a lambda? Well, Axiomatic defines these sorts of convenience initializer for `Clause` so you can define rules without having to seperately declare a `Binding`. Simply pass a lambda taking as many `Binding` arguments as you'd like (up to 6) into the initializer for `Clause`, and return the argument tuple it'd normally expect. If you're confused, no worries, this is just a syntactic convenience; you can still declare your bindings separately in the outer scope. 
 
