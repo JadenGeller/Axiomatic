@@ -6,7 +6,7 @@ Axiomatic is a logic framework that, give declarations of facts and rules, provi
 
 Rather then asking you to write a step-by-step algorithm to solve a problem, [logic programming](https://en.wikipedia.org/wiki/Logic_programming) asks you to provide a set of facts and rules. For example, we can starting by giving the fact that grass is green `color(grass, green)` and the rule that green things are awesome `awesome(X) :- color(X, green)`, and then query whether grass is in fact awesome, `?- awesome(grass)`. Note that the order of "grass" and "green" are unimportant as long as we are internally consistent. Logic programming doesn't just let us ask yes or no questions though, we can ask it for all possible solutions that fit our set of constraints.
 
-Consider the following facts and rules:
+Consider the following facts and rules (represented as a Prolog program):
 ```prolog
 parent(matt, jaden).
 parent(tuesday, jaden).
@@ -26,8 +26,8 @@ Logic programming provides a really simple mechanism to find answers that can be
 Terms is the most primitive logic type provided by Axiomatic. Essentially, it allows you define both atoms, like `jaden` and `green`, as well as complex compound terms, such as `awesome(jaden)` or `triangle(point(0, 0), point(1, 1), point(0, 1))`. Terms consist of a `name` as well as 0 or more `arguments`. Though the name must be a literal value, the arguments may be variables. For example, `color(X, purple)` says that *everything* is purple!
 
 ```swift
-Term(name: "cool", arguments: [.Literal(Term(atom: "swift"))])  // cool(swift).
-Term(name: "cool", arguments: [.Literal(Term(atom: "prolog"))]) // cool(prolog).
+let s = Term(name: "cool", arguments: [.Literal(Term(atom: "swift"))])  // cool(swift).
+let p = Term(name: "cool", arguments: [.Literal(Term(atom: "prolog"))]) // cool(prolog).
 ```
 
 Note that each argument of a `Term` is of type `Unifiable<Term>`, so you must specify if the argument is of the `Unifiable.Literal(Term)` or the `Unifiable.Variable(Binding)` case. As a reminder, a [`Binding`](https://github.com/jadengeller/gluey#binding) is a type defined by [Gluey](https://github.com/JadenGeller/Gluey) that can be unified with other instances of the same type. It is used to represent variables within this framework since they become bound together by the unification process and often two variables in seperate terms ought to refer to the same value.
@@ -41,41 +41,67 @@ As a reminder, a `Clause` is formed entirely of our of `Term`s. The clause `happ
 Clauses can and often do utilize terms with variable arguments to specify conditional truths. This is done by declaring a [`Binding`](https://github.com/jadengeller/gluey#binding) and using it as a variable in one or more arguments in one or more terms of the clause. Note that it is illegal but unchecked to share the same `Binding` between multiple variables in separate clauses, and doing so will result in undefined behavior. 
 
 ```swift
+// awesome(X) :- color(X, green).
+let x = Binding<Term<String>>()
+let c = Clause(
+     rule: Term(name: "awesome", arguments: [
+          .Variable(x)
+     ]),
+     conditions: [
+          Term(name: "color", arguments: [
+               .Variable(x),
+               .Literal(Term(atom: "green"))
+          ])
+     ]
+)
+```
+
+Now you're probably thinking, wow, that's a *really* wordy definition of such a simple Prolog query, and you're right. Axiomatic isn't intended to be used to build programs "out of the box", but rather it's intended to be used a base for programs that rely on logic. Further, it relatively easy and straightforward to provide an abstraction atop Axiomatic to make it suitable for specific use cases.
+
+## `System`
+
+Once you've defined clauses to your hearts desire, you're ready to finally do something with them. `System` provides an initializer that takes in a sequence of clauses and build a logic system that can be easily queried.
+
+UNDER CONSTRUCTION...
+
+Check out this example maybe?
+
+```swift
 let system = System(clauses: [
-     // male(jaden).
-     Clause(fact: Predicate(name: "male", arguments: [.Constant(Predicate(atom: "jaden"))])),
-     // male(matt).
-     Clause(fact: Predicate(name: "male", arguments: [.Constant(Predicate(atom: "matt"))])),
-     // female(tuesday).
-     Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "tuesday"))])),
-     // female(kiley).
-     Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "kiley"))])),
-     // father(Parent, Child) :- male(Parent), parent(Parent, Child).
-     Clause{ parent, child in (
-         rule: Predicate(name: "father", arguments: [.Variable(parent), .Variable(child)]),
-         requirements: [
-             Predicate(name: "male", arguments: [.Variable(parent)]),
-             Predicate(name: "parent", arguments: [.Variable(parent), .Variable(child)])
-         ]
-     ) },
-     // parent(tuesday, jaden).
-     Clause(fact: Predicate(name: "parent", arguments:
-         [.Constant(Predicate(atom: "tuesday")), .Constant(Predicate(atom: "jaden"))])),
-     // parent(matt, jaden).
-     Clause(fact: Predicate(name: "parent", arguments:
-         [.Constant(Predicate(atom: "matt")), .Constant(Predicate(atom: "jaden"))])),
-     // parent(matt, kiley).
-     Clause(fact: Predicate(name: "parent", arguments:
-         [.Constant(Predicate(atom: "matt")), .Constant(Predicate(atom: "kiley"))])),
-     // parent(tuesday, kiley).
-     Clause(fact: Predicate(name: "parent", arguments:
-         [.Constant(Predicate(atom: "tuesday")), .Constant(Predicate(atom: "kiley"))]))
+    // male(jaden).
+    Clause(fact: Term(name: "male", arguments: [.Constant(Term(atom: "jaden"))])),
+    // male(matt).
+    Clause(fact: Term(name: "male", arguments: [.Constant(Term(atom: "matt"))])),
+    // female(tuesday).
+    Clause(fact: Term(name: "female", arguments: [.Constant(Term(atom: "tuesday"))])),
+    // female(kiley).
+    Clause(fact: Term(name: "female", arguments: [.Constant(Term(atom: "kiley"))])),
+    // father(Parent, Child) :- male(Parent), parent(Parent, Child).
+    Clause{ parent, child in (
+        rule: Term(name: "father", arguments: [.Variable(parent), .Variable(child)]),
+        requirements: [
+            Term(name: "male", arguments: [.Variable(parent)]),
+            Term(name: "parent", arguments: [.Variable(parent), .Variable(child)])
+        ]
+    ) },
+    // parent(tuesday, jaden).
+    Clause(fact: Term(name: "parent", arguments:
+        [.Constant(Term(atom: "tuesday")), .Constant(Term(atom: "jaden"))])),
+    // parent(matt, jaden).
+    Clause(fact: Term(name: "parent", arguments:
+        [.Constant(Term(atom: "matt")), .Constant(Term(atom: "jaden"))])),
+    // parent(matt, kiley).
+    Clause(fact: Term(name: "parent", arguments:
+        [.Constant(Term(atom: "matt")), .Constant(Term(atom: "kiley"))])),
+    // parent(tuesday, kiley).
+    Clause(fact: Term(name: "parent", arguments:
+        [.Constant(Term(atom: "tuesday")), .Constant(Term(atom: "kiley"))]))
 ])
-        
+
 var results: [String] = []
-let Child = Binding<Predicate<String>>()
+let Child = Binding<Term<String>>()
 // father(matt, Child).
-try! system.enumerateMatches(Predicate(name: "father", arguments: [.Constant(Predicate(atom: "matt")), .Variable(Child)])) {
+try! system.enumerateMatches(Term(name: "father", arguments: [.Constant(Term(atom: "matt")), .Variable(Child)])) {
     results.append(Child.value!.name)
 }
 XCTAssertEqual(["jaden", "kiley"], results)
