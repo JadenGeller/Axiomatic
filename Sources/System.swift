@@ -37,6 +37,11 @@ extension System {
 }
 */
 
+public enum SystemException: UnificationErrorType {
+    case Continue
+    case Break
+}
+
 extension System {
     /// Attempts to unify each term in `goals` with the known clauses in the system, calling `onMatch` each
     /// time it succeeds to simultaneously unify all `goals`.
@@ -65,15 +70,31 @@ extension System {
                         #if TRACE
                         print("SUCCESS: \(clause.head)")
                         #endif
+                        
                         try onMatch()
-                        throw UnificationError("CONTINUE") // We need a way to end early.
+                        throw SystemException.Continue
                     }
                 }
                 #if TRACE
                 print("DONE")
                 #endif
                 return
-            } catch let error as UnificationError {
+            }
+            catch let exception as SystemException {
+                switch exception {
+                case .Break:
+                    #if TRACE
+                        print("BREAK")
+                    #endif
+                    return
+                case .Continue:
+                    #if TRACE
+                        print("CONTINUING")
+                    #endif
+                    continue
+                }
+            }
+            catch let error as UnificationError {
                 #if TRACE
                 print("BACKTRACKING: \(error)")
                 #endif

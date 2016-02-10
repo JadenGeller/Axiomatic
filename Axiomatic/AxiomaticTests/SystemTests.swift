@@ -83,7 +83,7 @@ class SystemTests: XCTestCase {
             .Variable(T), .Literal(Term(atom: "1")), .Variable(V)
         ])) {
             XCTAssertEqual("a", T.value?.name)
-            XCTAssertEqual("y", V.value?.name)       
+            XCTAssertEqual("y", V.value?.name)
         }
     }
     
@@ -144,7 +144,7 @@ class SystemTests: XCTestCase {
         _ = try? system.enumerateMatches(Term(name: "test", arguments: [.Literal(Term(name: "test", arguments: [.Literal(Term(name: "test", arguments: [.Literal(Term(name: "test", arguments: [.Variable(A)]))]))]))])) {
             XCTAssertEqual("x", A.value?.name)
             count += 1
-            throw NSError(domain: "I don't care", code: 0, userInfo: nil)
+            throw SystemException.Break
         }
         XCTAssertEqual(1, count)
     }
