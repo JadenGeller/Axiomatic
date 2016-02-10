@@ -60,7 +60,50 @@ Now you're probably thinking, wow, that's a *really* wordy definition of such a 
 
 ## `System`
 
-Once you've defined clauses to your hearts desire, you're ready to finally do something with them. `System` provides an initializer that takes in a sequence of clauses and build a logic system that can be easily queried.
+Once you've defined clauses to your hearts desire, you're ready to finally do something with them. `System` provides an initializer that takes in a sequence of clauses and build a logic system that can be easily queried. Let's check out what our grandparent example from above looks like as an Axiomatic system!
+
+```swift
+let system = System(clauses: [
+    // parent(matt, jaden).
+    Clause(fact: Term(name: "parent", arguments: [
+        .Literal(Term(atom: "Matt")),
+        .Literal(Term(atom: "Jaden"))
+    ])),
+    // parent(tuesday, jaden).
+    Clause(fact: Term(name: "parent", arguments: [
+        .Literal(Term(atom: "Tuesday")),
+        .Literal(Term(atom: "Jaden"))
+    ])),
+    // parent(debbie, matt).
+    Clause(fact: Term(name: "parent", arguments: [
+        .Literal(Term(atom: "Debbie")),
+        .Literal(Term(atom: "Matt"))
+    ])),
+    // parent(dennis, matt).
+    Clause(fact: Term(name: "parent", arguments: [
+        .Literal(Term(atom: "Dennis")),
+        .Literal(Term(atom: "Matt"))
+    ])),
+    // parent(liz, tuesday).
+    Clause(fact: Term(name: "parent", arguments: [
+        .Literal(Term(atom: "Liz")),
+        .Literal(Term(atom: "Tuesday"))
+    ])),
+    // parent(mike, tuesday).
+    Clause(fact: Term(name: "parent", arguments: [
+        .Literal(Term(atom: "Mike")),
+        .Literal(Term(atom: "Tuesday"))
+    ])),
+    // grandparent(A, B) :- parent(A, X), parent(X, B).
+    Clause{ A, B, X in (
+        rule: Term(name: "grandparent", arguments: [.Variable(A), .Variable(B)]),
+        requirements: [
+            Term(name: "parent", arguments: [.Variable(A), .Variable(X)]),
+            Term(name: "parent", arguments: [.Variable(X), .Variable(B)])
+        ]
+    )}
+])
+```
 
 UNDER CONSTRUCTION...
 
