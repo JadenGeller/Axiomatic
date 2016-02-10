@@ -23,7 +23,7 @@ Logic programming provides a really simple mechanism to find answers that can be
 
 ## `Term`
 
-Terms are the most basic logic programming type provided by Axiomatic. Essentially, it allows you define both atoms, like `jaden` and `green`, as well as complex compound terms, such as `awesome(jaden)` or `triangle(point(0, 0), point(1, 1), point(0, 1))`. Terms consist of a `name` as well as 0 or more `arguments`. Though the name must be a literal value, the arguments may be variables. For example, `color(X, purple)` says that *everything* is purple!
+Terms is the most primitive logic type provided by Axiomatic. Essentially, it allows you define both atoms, like `jaden` and `green`, as well as complex compound terms, such as `awesome(jaden)` or `triangle(point(0, 0), point(1, 1), point(0, 1))`. Terms consist of a `name` as well as 0 or more `arguments`. Though the name must be a literal value, the arguments may be variables. For example, `color(X, purple)` says that *everything* is purple!
 
 ```swift
 Term(name: "cool", arguments: [.Literal(Term(atom: "swift"))])  // cool(swift).
@@ -38,7 +38,7 @@ Clauses make statements of the form *X implies Y*. That *Y* is called the `head`
 
 As a reminder, a `Clause` is formed entirely of our of `Term`s. The clause `happy(monkey) :- eating(monkey, banana)` for example, says that the term `happy(monkey)` is true whenever the term `eating(monkey, banana)`. It doesn't however imply the converse since there might exist another clause that says the monkey is also happy if it's eating rope swinging.
 
-Clauses can and often do utilize terms with variable arguments to specify conditional truths. This is done by setting an argument of 
+Clauses can and often do utilize terms with variable arguments to specify conditional truths. This is done by declaring a [`Binding`](https://github.com/jadengeller/gluey#binding) and using it as a variable in one or more arguments in one or more terms of the clause. Note that it is illegal but unchecked to share the same `Binding` between multiple variables in separate clauses, and doing so will result in undefined behavior. 
 
 ```swift
 let system = System(clauses: [
