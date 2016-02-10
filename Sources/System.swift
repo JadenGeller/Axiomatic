@@ -21,8 +21,7 @@ public struct System<Atom: Hashable> {
     /// Returns unique copies of the clauses that might bind with a `Term` of a given `functor`.
     private func uniqueClausesWithFunctor(functor: Functor<Atom>) -> LazyMapSequence<[Clause<Atom>], Clause<Atom>> {
         let nonUniqueClauses = clauses[functor] ?? []
-        let context = CopyContext()
-        return nonUniqueClauses.lazy.map { Clause.copy($0, withContext: context) }
+        return nonUniqueClauses.lazy.map { Clause.copy($0, withContext: CopyContext()) }
     }
 }
 
