@@ -60,44 +60,48 @@ Now you're probably thinking, wow, that's a *really* wordy definition of such a 
 
 ## `System`
 
-Once you've defined `Clause`s to your hearts desire, you're ready to finally do something with them. `System` provides an initializer that takes in a sequence of `Clause`s and build a logic system that can be easily queried.
+Once you've defined clauses to your hearts desire, you're ready to finally do something with them. `System` provides an initializer that takes in a sequence of clauses and build a logic system that can be easily queried.
+
+UNDER CONSTRUCTION...
+
+Check out this example maybe?
 
 ```swift
 let system = System(clauses: [
-     // male(jaden).
-     Clause(fact: Predicate(name: "male", arguments: [.Constant(Predicate(atom: "jaden"))])),
-     // male(matt).
-     Clause(fact: Predicate(name: "male", arguments: [.Constant(Predicate(atom: "matt"))])),
-     // female(tuesday).
-     Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "tuesday"))])),
-     // female(kiley).
-     Clause(fact: Predicate(name: "female", arguments: [.Constant(Predicate(atom: "kiley"))])),
-     // father(Parent, Child) :- male(Parent), parent(Parent, Child).
-     Clause{ parent, child in (
-         rule: Predicate(name: "father", arguments: [.Variable(parent), .Variable(child)]),
-         requirements: [
-             Predicate(name: "male", arguments: [.Variable(parent)]),
-             Predicate(name: "parent", arguments: [.Variable(parent), .Variable(child)])
-         ]
-     ) },
-     // parent(tuesday, jaden).
-     Clause(fact: Predicate(name: "parent", arguments:
-         [.Constant(Predicate(atom: "tuesday")), .Constant(Predicate(atom: "jaden"))])),
-     // parent(matt, jaden).
-     Clause(fact: Predicate(name: "parent", arguments:
-         [.Constant(Predicate(atom: "matt")), .Constant(Predicate(atom: "jaden"))])),
-     // parent(matt, kiley).
-     Clause(fact: Predicate(name: "parent", arguments:
-         [.Constant(Predicate(atom: "matt")), .Constant(Predicate(atom: "kiley"))])),
-     // parent(tuesday, kiley).
-     Clause(fact: Predicate(name: "parent", arguments:
-         [.Constant(Predicate(atom: "tuesday")), .Constant(Predicate(atom: "kiley"))]))
+    // male(jaden).
+    Clause(fact: Term(name: "male", arguments: [.Constant(Term(atom: "jaden"))])),
+    // male(matt).
+    Clause(fact: Term(name: "male", arguments: [.Constant(Term(atom: "matt"))])),
+    // female(tuesday).
+    Clause(fact: Term(name: "female", arguments: [.Constant(Term(atom: "tuesday"))])),
+    // female(kiley).
+    Clause(fact: Term(name: "female", arguments: [.Constant(Term(atom: "kiley"))])),
+    // father(Parent, Child) :- male(Parent), parent(Parent, Child).
+    Clause{ parent, child in (
+        rule: Term(name: "father", arguments: [.Variable(parent), .Variable(child)]),
+        requirements: [
+            Term(name: "male", arguments: [.Variable(parent)]),
+            Term(name: "parent", arguments: [.Variable(parent), .Variable(child)])
+        ]
+    ) },
+    // parent(tuesday, jaden).
+    Clause(fact: Term(name: "parent", arguments:
+        [.Constant(Term(atom: "tuesday")), .Constant(Term(atom: "jaden"))])),
+    // parent(matt, jaden).
+    Clause(fact: Term(name: "parent", arguments:
+        [.Constant(Term(atom: "matt")), .Constant(Term(atom: "jaden"))])),
+    // parent(matt, kiley).
+    Clause(fact: Term(name: "parent", arguments:
+        [.Constant(Term(atom: "matt")), .Constant(Term(atom: "kiley"))])),
+    // parent(tuesday, kiley).
+    Clause(fact: Term(name: "parent", arguments:
+        [.Constant(Term(atom: "tuesday")), .Constant(Term(atom: "kiley"))]))
 ])
-        
+
 var results: [String] = []
-let Child = Binding<Predicate<String>>()
+let Child = Binding<Term<String>>()
 // father(matt, Child).
-try! system.enumerateMatches(Predicate(name: "father", arguments: [.Constant(Predicate(atom: "matt")), .Variable(Child)])) {
+try! system.enumerateMatches(Term(name: "father", arguments: [.Constant(Term(atom: "matt")), .Variable(Child)])) {
     results.append(Child.value!.name)
 }
 XCTAssertEqual(["jaden", "kiley"], results)
