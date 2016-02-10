@@ -128,6 +128,57 @@ class SystemTests: XCTestCase {
         XCTAssertEqual(["jaden", "kiley"], results)
     }
     
+    func testRule2() {
+        let system = System(clauses: [
+            // parent(matt, jaden).
+            Clause(fact: Term(name: "parent", arguments: [
+                .Literal(Term(atom: "Matt")),
+                .Literal(Term(atom: "Jaden"))
+            ])),
+            // parent(tuesday, jaden).
+            Clause(fact: Term(name: "parent", arguments: [
+                .Literal(Term(atom: "Tuesday")),
+                .Literal(Term(atom: "Jaden"))
+            ])),
+            // parent(debbie, matt).
+            Clause(fact: Term(name: "parent", arguments: [
+                .Literal(Term(atom: "Debbie")),
+                .Literal(Term(atom: "Matt"))
+            ])),
+            // parent(dennis, matt).
+            Clause(fact: Term(name: "parent", arguments: [
+                .Literal(Term(atom: "Dennis")),
+                .Literal(Term(atom: "Matt"))
+            ])),
+            // parent(liz, tuesday).
+            Clause(fact: Term(name: "parent", arguments: [
+                .Literal(Term(atom: "Liz")),
+                .Literal(Term(atom: "Tuesday"))
+            ])),
+            // parent(mike, tuesday).
+            Clause(fact: Term(name: "parent", arguments: [
+                .Literal(Term(atom: "Mike")),
+                .Literal(Term(atom: "Tuesday"))
+            ])),
+            // grandparent(A, B) :- parent(A, X), parent(X, B).
+            Clause{ A, B, X in (
+                rule: Term(name: "grandparent", arguments: [.Variable(A), .Variable(B)]),
+                requirements: [
+                    Term(name: "parent", arguments: [.Variable(A), .Variable(X)]),
+                    Term(name: "parent", arguments: [.Variable(X), .Variable(B)])
+                ]
+            )}
+        ])
+        
+        var results: [String] = []
+        let G = Binding<Term<String>>()
+        // grandparent(G, jaden).
+        try! system.enumerateMatches(Term(name: "grandparent", arguments: [.Variable(G), .Literal(Term(atom: "Jaden"))])) {
+            results.append(G.value!.name)
+        }
+        XCTAssertEqual(["Debbie", "Dennis", "Liz", "Mike"], results)
+    }
+    
     func testRecursive() {
         let system = System(clauses: [
             // test(x).
