@@ -12,7 +12,7 @@ import Axiomatic
 import Gluey
 
 class SystemTests: XCTestCase {
-    func testSuccess() {
+    func testSuccess() {        
         let system = System(clauses: [
             // jaden(cool).
             Clause(fact: Term(name: "jaden", arguments: [.Constant(Term(atom: "cool"))])),

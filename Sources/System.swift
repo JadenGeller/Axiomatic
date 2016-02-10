@@ -25,6 +25,7 @@ public struct System<Atom: Hashable> {
     }
 }
 
+/* Probably unneeded
 extension System {
     /// Adds a new clause to the system.
     public mutating func declare(clause: Clause<Atom>) {
@@ -34,6 +35,7 @@ extension System {
         clauses[functor] = functorClauses
     }
 }
+*/
 
 extension System {
     /// Attempts to unify each term in `goals` with the known clauses in the system, calling `onMatch` each
