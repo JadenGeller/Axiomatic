@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Clause Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Clause" class="dashAnchor"></a>
+    <a title="Clause Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/JadenGeller/Axiomatic"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Clause Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/SystemException.html">SystemException</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions/==(_:_:).html">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions/==(_:_:).html">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Clause.html">Clause</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Functor.html">Functor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/System.html">System</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Term.html">Term</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Clause</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Clause</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="p">:</span> <span class="kt">Hashable</span><span class="o">&gt;</span></code></pre>
+
+                </div>
+              </div>
+            <p>A statement whose <code>head</code> is true given that its <code>body</code> is true. When the <code>body</code> is empty,
+a clause is commonly called a <q>fact</q>. Otherwise, it is called a <q>rule</q>. <code>Clause</code> is often
+used with unification variables such that conditional truths can be expressed, such as
+<code>grandparent(A, B) :- parent(A, X), parent(X, B)</code>.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV9Axiomatic6Clause4headGVS_4Termq__"></a>
+                    <a name="//apple_ref/swift/Property/head" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV9Axiomatic6Clause4headGVS_4Termq__">head</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The term that is true conditional on all terms of the <code><a href="../Structs/Clause.html#/s:vV9Axiomatic6Clause4bodyGSaGVS_4Termq___">body</a></code> being true.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">head</span><span class="p">:</span> <span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV9Axiomatic6Clause4bodyGSaGVS_4Termq___"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV9Axiomatic6Clause4bodyGSaGVS_4Termq___">body</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The collection of terms that all must be true in order for <code><a href="../Structs/Clause.html#/s:vV9Axiomatic6Clause4headGVS_4Termq__">head</a></code> to be true.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="p">[</span><span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV9Axiomatic6ClausecuRq_Ss8Hashable_FMGS0_q__FT4factGVS_4Termq___GS0_q__"></a>
+                    <a name="//apple_ref/swift/Method/init(fact:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Axiomatic6ClausecuRq_Ss8Hashable_FMGS0_q__FT4factGVS_4Termq___GS0_q__">init(fact:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructs a <code><a href="../Structs/Clause.html">Clause</a></code> that is always true.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">fact</span><span class="p">:</span> <span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV9Axiomatic6ClausecuRq_Ss8Hashable_FMGS0_q__FT4ruleGVS_4Termq__10conditionsGSaGS2_q____GS0_q__"></a>
+                    <a name="//apple_ref/swift/Method/init(rule:conditions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Axiomatic6ClausecuRq_Ss8Hashable_FMGS0_q__FT4ruleGVS_4Termq__10conditionsGSaGS2_q____GS0_q__">init(rule:conditions:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructs a <code><a href="../Structs/Clause.html">Clause</a></code> that defines a rule that is true given some set of <code>conditions</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rule</span><span class="p">:</span> <span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">conditions</span><span class="p">:</span> <span class="p">[</span><span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vV9Axiomatic6Clause11descriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vV9Axiomatic6Clause11descriptionSS">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A textual description of <code>self</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV9Axiomatic6ClausecuRq_Ss8Hashable_FMGS0_q__FT5buildFT_T4ruleGVS_4Termq__10conditionsGSaGS2_q_____GS0_q__"></a>
+                    <a name="//apple_ref/swift/Method/init(build:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Axiomatic6ClausecuRq_Ss8Hashable_FMGS0_q__FT5buildFT_T4ruleGVS_4Termq__10conditionsGSaGS2_q_____GS0_q__">init(build:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructs a <code><a href="../Structs/Clause.html">Clause</a></code> that defines a rule that is true given some set of <code>conditions</code>
+using the <code>build</code> closure that provides 0 unused bindings.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">build</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">rule</span><span class="p">:</span> <span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">conditions</span><span class="p">:</span> <span class="p">[</span><span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">]))</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV9Axiomatic6ClausecERR"></a>
+                    <a name="//apple_ref/swift/Method/init(build:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Axiomatic6ClausecERR">init(build:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructs a <code><a href="../Structs/Clause.html">Clause</a></code> that defines a rule that is true given some set of <code>conditions</code>
+using the <code>build</code> closure that provides 1 unused bindings.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">build</span><span class="p">:</span> <span class="kt">Binding</span><span class="o">&lt;</span><span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;&gt;</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">rule</span><span class="p">:</span> <span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">conditions</span><span class="p">:</span> <span class="p">[</span><span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">]))</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV9Axiomatic6ClausecuRq_Ss8Hashable_FMGS0_q__FT5buildFT_GVS_4Termq___GS0_q__"></a>
+                    <a name="//apple_ref/swift/Method/init(build:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV9Axiomatic6ClausecuRq_Ss8Hashable_FMGS0_q__FT5buildFT_GVS_4Termq___GS0_q__">init(build:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructs a <code><a href="../Structs/Clause.html">Clause</a></code> that defines a fact using the <code>build</code> closure that provides 0 unused bindings.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">build</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Term</span><span class="o">&lt;</span><span class="kt">Atom</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFV9Axiomatic6Clause4copyERR"></a>
+                    <a name="//apple_ref/swift/Method/copy(_:withContext:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFV9Axiomatic6Clause4copyERR">copy(_:withContext:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Copies <code>this</code> reusing any substructure that has already been copied within
+this context, and storing any newly generated substructure into the context.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">copy</span><span class="p">(</span><span class="nv">this</span><span class="p">:</span> <span class="kt">Clause</span><span class="p">,</span> <span class="n">withContext</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">CopyContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Clause</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">Jaden</a>. All rights reserved. (Last updated: 2016-02-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
