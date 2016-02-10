@@ -125,4 +125,4 @@ You are not guarenteed that the unified state of the variables will remain after
 
 ## That's all folks!
 
-Hopefully this was a good introduction to logic programming and the Axiomatic framework. If you find yourself still confused, dig through the [source code](https://github.com/JadenGeller/Axiomatic/tree/master/Sources) a bit, check out some of the [test cases](https://github.com/JadenGeller/Axiomatic/blob/master/Axiomatic/AxiomaticTests/SystemTests.swift), and maybe read the [documentation](http://jadengeller.github.io/Axiomatic/docs/index.html). If you're still lost, feel free to [tweet me](https://twitter.com/jadengeller)! :)
+Hopefully this was a good introduction to logic programming and the Axiomatic framework. If you find yourself still confused, dig through the [source code](https://github.com/JadenGeller/Axiomatic/tree/master/Sources) a bit, check out some of the [test cases](https://github.com/JadenGeller/Axiomatic/blob/master/Axiomatic/AxiomaticTests/SystemTests.swift), and maybe read the [documentation](http://jadengeller.github.io/Axiomatic/index.html). If you're still lost, feel free to [tweet me](https://twitter.com/jadengeller)! :)
