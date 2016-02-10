@@ -1,6 +1,6 @@
 # Axiomatic
 
-Axiomatic is a logic framework, built on top of the unification framework [Gluey](https://github.com/JadenGeller/Gluey), that defines tree-like unification types suitable for logic programming. Axiomatic, inspired by [Prolog](https://en.wikipedia.org/wiki/Prolog), provides a mechanism for defining [logical formulas](https://en.wikipedia.org/wiki/Horn_clause).
+Axiomatic is a logic framework that, give declarations of facts and rules, provides a mechanism to run a query to determine if a statement is true, and if so, under what conditions. Axiomatic is built on top of the unification framework [Gluey](https://github.com/JadenGeller/Gluey), and it extends it by defining tree-like unification types and a query system that is suitable for logic programming. Axiomatic is closely based off the logic programming language [Prolog](https://en.wikipedia.org/wiki/Prolog) as well as the mathematic concept of [Horn clauses](https://en.wikipedia.org/wiki/Horn_clause).
 
 An example:
 ```swift
