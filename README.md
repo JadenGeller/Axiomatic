@@ -123,6 +123,26 @@ By default, `enumerateMatches` will call the callback for each possible match. I
 
 You are not guaranteed that the unified state of the variables will remain after you return from the callback. As such, make sure to record any information you might need to know while *inside* the callback.
 
+### Unification Process
+
+So how does this fancy schmancy `enumerateMatches` function work anyhow? Well, it uses a process known as [unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) by which all the possible matches are enumerated and attempted, recursively querying the dependencies of a clause on success and backtracking on failure. We'll look at the algorithm in a bit more detail. If you're just looking to use this library, feel free to skip this section.
+
+#### Backtracking Clause Unification
+
+The first step is to, given a goal, determine what possible clauses we might be able to unify with. Any clause with the same functor (name and arity) as our clause is a potential candidate for unification. Luckily, `System` stores a dictionary of type `[Functor : [Clause]]` so its efficient to look up a list of clauses compatible with a given term. 
+
+For each suitable candidate, we will attempt to unify the head of the clause with our query. If unificaiton fails, we've determined that they are incompatible, and we move onto the next clause. If unification with the head succeeds, we've determined that this clause provides insight to this query. Recall that the head of a clause is only true if each term of its body is also true. Thus, if we are able to unify its body, we can consider the query unified with this clause. Therefore, we must recursively call `enumerateMatches` on each term of its body.
+
+If we are able to unifiy *all* of these terms in the body, then we should invoke the callback. To do this, we set the callback of the first term to unify the second term, and that term's callback to unify the third term, and so on. The callback of the final term will call the original passed in lambda, so it will be called once all terms in the body have been unified.
+
+On failure at any point, we backtrack to the last choice point and continue from there. Similiarly, after the caller has been notified of a successful match, we simulate an error occuring such that we'll again backtrack to the last choice point so we can find the next match. Note that this backtracking involves both popping the call stack and restoring a previous unification state. The former is done using Swift's efficient exception handling while the latter is done by saving unificaiton state snapshots at choice points and later catching exceptions that occur so that this snapshot can be restored.
+
+Overall, the process for finding matches is pretty simple! Just look at all the clauses a query might match with, attempt to unify it with the cluases head, and then unify with the body of the clause. If all this succeeds, we have a match! If not, keep looking! Check out the [source code](https://github.com/JadenGeller/Axiomatic/blob/master/Sources/System.swift#L47) if you'd like to see more!
+
+#### Individual Term Unification
+
+If you're interested in how the unification of two single terms is performed, you should first read the documentation for [Gluey](https://github.com/JadenGeller/Gluey) as its a minor extension of the functionality provided by that module. In fact, the only modification by Axiomatic is the introduction of a `Term` type which is a tree-like datastructure. Since `Unifiable` values in Gluey already support recursive unfication, when two terms are unified, it simply attempts to unify each of their arguments. Super simple! If you don't believe me, here's the [definition in the source](https://github.com/JadenGeller/Axiomatic/blob/master/Sources/Term.swift#L61)!
+
 ## That's all folks!
 
 Hopefully this was a good introduction to logic programming and the Axiomatic framework. If you find yourself still confused, dig through the [source code](https://github.com/JadenGeller/Axiomatic/tree/master/Sources) a bit, check out some of the [test cases](https://github.com/JadenGeller/Axiomatic/blob/master/Axiomatic/AxiomaticTests/SystemTests.swift), and maybe read the [documentation](http://jadengeller.github.io/Axiomatic/index.html). If you're still lost, feel free to [tweet me](https://twitter.com/jadengeller)! :)
