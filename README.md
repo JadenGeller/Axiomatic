@@ -129,7 +129,7 @@ So how does this fancy schmancy `enumerateMatches` function work anyhow? Well, i
 
 #### Backtracking Clause Unification
 
-The first step is to, given a goal, determine what possible clauses we might be able to unify with. Any clause with the same functor (name and arity) as our clause is a potential candidate for unification. Luckily, `System` stores a dictionary of type `[Functor : [Clause]]` so its efficient to look up a list of clauses compatible with a given term. 
+The first step is to, given a goal, determine what possible clauses we might be able to unify with. Any clause with the same functor (name and arity) as our clause is a potential candidate for unification. Luckily, `System` stores a dictionary of type `[Functor : [Clause]]` so it's efficient to look up a list of clauses compatible with a given term. 
 
 For each suitable candidate, we will attempt to unify the head of the clause with our query. If unificaiton fails, we've determined that they are incompatible, and we move onto the next clause. If unification with the head succeeds, we've determined that this clause provides insight to this query. Recall that the head of a clause is only true if each term of its body is also true. Thus, if we are able to unify its body, we can consider the query unified with this clause. Therefore, we must recursively call `enumerateMatches` on each term of its body.
 
