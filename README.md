@@ -137,7 +137,7 @@ If we are able to unifiy *all* of these terms in the body, then we should invoke
 
 On failure at any point, we backtrack to the last choice point and continue from there. Similiarly, after the caller has been notified of a successful match, we simulate an error occuring such that we'll again backtrack to the last choice point so we can find the next match. Note that this backtracking involves both popping the call stack and restoring a previous unification state. The former is done using Swift's efficient exception handling while the latter is done by saving unificaiton state snapshots at choice points and later catching exceptions that occur so that this snapshot can be restored.
 
-Overall, the process for finding matches is pretty simple! Just look at all the clauses a query might match with, attempt to unify it with the cluases head, and then unify with the body of the clause. If all this succeeds, we have a match! If not, keep looking! Check out the [source code](https://github.com/JadenGeller/Axiomatic/blob/master/Sources/System.swift#L47) if you'd like to see more!
+Overall, the process for finding matches is pretty simple! Just look at all the clauses a query might match with, attempt to unify it with the clauses head, and then unify with the body of the clause. If all this succeeds, we have a match! If not, keep looking! Check out the [source code](https://github.com/JadenGeller/Axiomatic/blob/master/Sources/System.swift#L47) if you'd like to see more!
 
 #### Individual Term Unification
 
