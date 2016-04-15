@@ -15,12 +15,12 @@ class SystemTests: XCTestCase {
     func testSuccess() {        
         let system = System(clauses: [
             // jaden(cool).
-            Clause(fact: Term(name: "jaden", arguments: [.Literal(Term(atom: "cool"))])),
+            Clause(fact: Term(name: "jaden", arguments: [.literal(Term(atom: "cool"))])),
             // swift(awesome).
-            Clause(fact: Term(name: "swift", arguments: [.Literal(Term(atom: "awesome"))]))
+            Clause(fact: Term(name: "swift", arguments: [.literal(Term(atom: "awesome"))]))
         ])
         var count = 0
-        try! system.enumerateMatches(Term(name: "swift", arguments: [.Literal(Term(atom: "awesome"))])) {
+        try! system.enumerateMatches(Term(name: "swift", arguments: [.literal(Term(atom: "awesome"))])) {
             count += 1
         }
         XCTAssertEqual(1, count)
@@ -29,13 +29,13 @@ class SystemTests: XCTestCase {
     func testFailure() {
         let system = System(clauses: [
             // jaden(cool).
-            Clause(fact: Term(name: "jaden", arguments: [.Literal(Term(atom: "cool"))])),
+            Clause(fact: Term(name: "jaden", arguments: [.literal(Term(atom: "cool"))])),
             // swift(awesome).
-            Clause(fact: Term(name: "swift", arguments: [.Literal(Term(atom: "awesome"))]))
+            Clause(fact: Term(name: "swift", arguments: [.literal(Term(atom: "awesome"))]))
             ])
         var count = 0
         // swift(uncool).
-        try! system.enumerateMatches(Term(name: "swift", arguments: [.Literal(Term(atom: "uncool"))])) {
+        try! system.enumerateMatches(Term(name: "swift", arguments: [.literal(Term(atom: "uncool"))])) {
             count += 1
         }
         XCTAssertEqual(0, count)
@@ -45,11 +45,11 @@ class SystemTests: XCTestCase {
         let system = System(clauses: [
             // test(a, 0, x).
             Clause(fact: Term(name: "test", arguments: [
-                .Literal(Term(atom: "a")), .Literal(Term(atom: "0")), .Literal(Term(atom: "x"))
+                .literal(Term(atom: "a")), .literal(Term(atom: "0")), .literal(Term(atom: "x"))
             ])),
             // test(b, 1, y).
             Clause(fact: Term(name: "test", arguments: [
-                .Literal(Term(atom: "b")), .Literal(Term(atom: "1")), .Literal(Term(atom: "y"))
+                .literal(Term(atom: "b")), .literal(Term(atom: "1")), .literal(Term(atom: "y"))
             ]))
         ])
         
@@ -57,7 +57,7 @@ class SystemTests: XCTestCase {
         let V = Binding<Term<String>>()
         // ? test(T, 1, V).
         try! system.enumerateMatches(Term(name: "test", arguments: [
-            .Variable(T), .Literal(Term(atom: "1")), .Variable(V)
+            .variable(T), .literal(Term(atom: "1")), .variable(V)
         ])) {
             XCTAssertEqual("b", T.value?.name)
             XCTAssertEqual("y", V.value?.name)
@@ -68,11 +68,11 @@ class SystemTests: XCTestCase {
         let system = System(clauses: [
             // test(a, 0, x).
             Clause(fact: Term(name: "test", arguments: [
-                .Literal(Term(atom: "a")), .Literal(Term(atom: "0")), .Literal(Term(atom: "x"))
+                .literal(Term(atom: "a")), .literal(Term(atom: "0")), .literal(Term(atom: "x"))
                 ])),
             // test(a, 1, y).
             Clause(fact: Term(name: "test", arguments: [
-                .Literal(Term(atom: "a")), .Literal(Term(atom: "1")), .Literal(Term(atom: "y"))
+                .literal(Term(atom: "a")), .literal(Term(atom: "1")), .literal(Term(atom: "y"))
                 ]))
             ])
         
@@ -80,7 +80,7 @@ class SystemTests: XCTestCase {
         let V = Binding<Term<String>>()
         // ? test(T, 1, V).
         try! system.enumerateMatches(Term(name: "test", arguments: [
-            .Variable(T), .Literal(Term(atom: "1")), .Variable(V)
+            .variable(T), .literal(Term(atom: "1")), .variable(V)
         ])) {
             XCTAssertEqual("a", T.value?.name)
             XCTAssertEqual("y", V.value?.name)
@@ -90,39 +90,39 @@ class SystemTests: XCTestCase {
     func testRule() {
         let system = System(clauses: [
             // male(jaden).
-            Clause(fact: Term(name: "male", arguments: [.Literal(Term(atom: "jaden"))])),
+            Clause(fact: Term(name: "male", arguments: [.literal(Term(atom: "jaden"))])),
             // male(matt).
-            Clause(fact: Term(name: "male", arguments: [.Literal(Term(atom: "matt"))])),
+            Clause(fact: Term(name: "male", arguments: [.literal(Term(atom: "matt"))])),
             // female(tuesday).
-            Clause(fact: Term(name: "female", arguments: [.Literal(Term(atom: "tuesday"))])),
+            Clause(fact: Term(name: "female", arguments: [.literal(Term(atom: "tuesday"))])),
             // female(kiley).
-            Clause(fact: Term(name: "female", arguments: [.Literal(Term(atom: "kiley"))])),
+            Clause(fact: Term(name: "female", arguments: [.literal(Term(atom: "kiley"))])),
             // father(Parent, Child) :- male(Parent), parent(Parent, Child).
             Clause{ parent, child in (
-                rule: Term(name: "father", arguments: [.Variable(parent), .Variable(child)]),
+                rule: Term(name: "father", arguments: [.variable(parent), .variable(child)]),
                 requirements: [
-                    Term(name: "male", arguments: [.Variable(parent)]),
-                    Term(name: "parent", arguments: [.Variable(parent), .Variable(child)])
+                    Term(name: "male", arguments: [.variable(parent)]),
+                    Term(name: "parent", arguments: [.variable(parent), .variable(child)])
                 ]
             ) },
             // parent(tuesday, jaden).
             Clause(fact: Term(name: "parent", arguments:
-                [.Literal(Term(atom: "tuesday")), .Literal(Term(atom: "jaden"))])),
+                [.literal(Term(atom: "tuesday")), .literal(Term(atom: "jaden"))])),
             // parent(matt, jaden).
             Clause(fact: Term(name: "parent", arguments:
-                [.Literal(Term(atom: "matt")), .Literal(Term(atom: "jaden"))])),
+                [.literal(Term(atom: "matt")), .literal(Term(atom: "jaden"))])),
             // parent(matt, kiley).
             Clause(fact: Term(name: "parent", arguments:
-                [.Literal(Term(atom: "matt")), .Literal(Term(atom: "kiley"))])),
+                [.literal(Term(atom: "matt")), .literal(Term(atom: "kiley"))])),
             // parent(tuesday, kiley).
             Clause(fact: Term(name: "parent", arguments:
-                [.Literal(Term(atom: "tuesday")), .Literal(Term(atom: "kiley"))]))
+                [.literal(Term(atom: "tuesday")), .literal(Term(atom: "kiley"))]))
         ])
         
         var results: [String] = []
         let Child = Binding<Term<String>>()
         // father(matt, Child).
-        try! system.enumerateMatches(Term(name: "father", arguments: [.Literal(Term(atom: "matt")), .Variable(Child)])) {
+        try! system.enumerateMatches(Term(name: "father", arguments: [.literal(Term(atom: "matt")), .variable(Child)])) {
             results.append(Child.value!.name)
         }
         XCTAssertEqual(["jaden", "kiley"], results)
@@ -132,40 +132,40 @@ class SystemTests: XCTestCase {
         let system = System(clauses: [
             // parent(matt, jaden).
             Clause(fact: Term(name: "parent", arguments: [
-                .Literal(Term(atom: "Matt")),
-                .Literal(Term(atom: "Jaden"))
+                .literal(Term(atom: "Matt")),
+                .literal(Term(atom: "Jaden"))
             ])),
             // parent(tuesday, jaden).
             Clause(fact: Term(name: "parent", arguments: [
-                .Literal(Term(atom: "Tuesday")),
-                .Literal(Term(atom: "Jaden"))
+                .literal(Term(atom: "Tuesday")),
+                .literal(Term(atom: "Jaden"))
             ])),
             // parent(debbie, matt).
             Clause(fact: Term(name: "parent", arguments: [
-                .Literal(Term(atom: "Debbie")),
-                .Literal(Term(atom: "Matt"))
+                .literal(Term(atom: "Debbie")),
+                .literal(Term(atom: "Matt"))
             ])),
             // parent(dennis, matt).
             Clause(fact: Term(name: "parent", arguments: [
-                .Literal(Term(atom: "Dennis")),
-                .Literal(Term(atom: "Matt"))
+                .literal(Term(atom: "Dennis")),
+                .literal(Term(atom: "Matt"))
             ])),
             // parent(liz, tuesday).
             Clause(fact: Term(name: "parent", arguments: [
-                .Literal(Term(atom: "Liz")),
-                .Literal(Term(atom: "Tuesday"))
+                .literal(Term(atom: "Liz")),
+                .literal(Term(atom: "Tuesday"))
             ])),
             // parent(mike, tuesday).
             Clause(fact: Term(name: "parent", arguments: [
-                .Literal(Term(atom: "Mike")),
-                .Literal(Term(atom: "Tuesday"))
+                .literal(Term(atom: "Mike")),
+                .literal(Term(atom: "Tuesday"))
             ])),
             // grandparent(A, B) :- parent(A, X), parent(X, B).
             Clause{ A, B, X in (
-                rule: Term(name: "grandparent", arguments: [.Variable(A), .Variable(B)]),
+                rule: Term(name: "grandparent", arguments: [.variable(A), .variable(B)]),
                 requirements: [
-                    Term(name: "parent", arguments: [.Variable(A), .Variable(X)]),
-                    Term(name: "parent", arguments: [.Variable(X), .Variable(B)])
+                    Term(name: "parent", arguments: [.variable(A), .variable(X)]),
+                    Term(name: "parent", arguments: [.variable(X), .variable(B)])
                 ]
             )}
         ])
@@ -173,7 +173,7 @@ class SystemTests: XCTestCase {
         var results: [String] = []
         let G = Binding<Term<String>>()
         // grandparent(G, jaden).
-        try! system.enumerateMatches(Term(name: "grandparent", arguments: [.Variable(G), .Literal(Term(atom: "Jaden"))])) {
+        try! system.enumerateMatches(Term(name: "grandparent", arguments: [.variable(G), .literal(Term(atom: "Jaden"))])) {
             results.append(G.value!.name)
         }
         XCTAssertEqual(["Debbie", "Dennis", "Liz", "Mike"], results)
@@ -182,17 +182,17 @@ class SystemTests: XCTestCase {
     func testRecursive() {
         let system = System(clauses: [
             // test(x).
-            Clause(fact: Term(name: "test", arguments: [.Literal(Term(atom: "x"))])),
+            Clause(fact: Term(name: "test", arguments: [.literal(Term(atom: "x"))])),
             // test(test(A)) :- test(A).
             Clause{ A in (
-                rule: Term(name: "test", arguments: [.Literal(Term(name: "test", arguments: [.Variable(A)]))]),
-                requirements: [Term(name: "test", arguments: [.Variable(A)])]
+                rule: Term(name: "test", arguments: [.literal(Term(name: "test", arguments: [.variable(A)]))]),
+                requirements: [Term(name: "test", arguments: [.variable(A)])]
             ) }
         ])
         let A = Binding<Term<String>>()
         var count = 0
         // test(test(test(test(A)))).
-        _ = try? system.enumerateMatches(Term(name: "test", arguments: [.Literal(Term(name: "test", arguments: [.Literal(Term(name: "test", arguments: [.Literal(Term(name: "test", arguments: [.Variable(A)]))]))]))])) {
+        _ = try? system.enumerateMatches(Term(name: "test", arguments: [.literal(Term(name: "test", arguments: [.literal(Term(name: "test", arguments: [.literal(Term(name: "test", arguments: [.variable(A)]))]))]))])) {
             XCTAssertEqual("x", A.value?.name)
             count += 1
             throw SystemException.Break
@@ -204,42 +204,42 @@ class SystemTests: XCTestCase {
         let system = System(clauses: [
             // square :: Int -> Int
             Clause(fact: Term(name: "binding", arguments: [
-                .Literal(Term(atom: "square")),
-                .Literal(Term(name: "function", arguments: [
-                    .Literal(Term(atom: "Int")),
-                    .Literal(Term(atom: "Int"))
+                .literal(Term(atom: "square")),
+                .literal(Term(name: "function", arguments: [
+                    .literal(Term(atom: "Int")),
+                    .literal(Term(atom: "Int"))
                 ]))
             ])),
             // sqrt :: Int -> Int
             Clause(fact: Term(name: "binding", arguments: [
-                .Literal(Term(atom: "sqrt")),
-                .Literal(Term(name: "function", arguments: [
-                    .Literal(Term(atom: "Int")),
-                    .Literal(Term(atom: "Int"))
+                .literal(Term(atom: "sqrt")),
+                .literal(Term(name: "function", arguments: [
+                    .literal(Term(atom: "Int")),
+                    .literal(Term(atom: "Int"))
                 ]))
             ])),
             // compose = f -> g -> x -> f (g x)
             Clause { A, B, C in (
                 fact: Term(name: "binding", arguments: [
-                    .Literal(Term(atom: "compose")),
-                    .Literal(Term(name: "function", arguments: [
-                        .Literal(Term(name: "function", arguments: [.Variable(B), .Variable(C)])),
-                        .Literal(Term(name: "function", arguments: [
-                            .Literal(Term(name: "function", arguments: [.Variable(A), .Variable(B)])),
-                            .Literal(Term(name: "function", arguments: [.Variable(A), .Variable(C)]))
+                    .literal(Term(atom: "compose")),
+                    .literal(Term(name: "function", arguments: [
+                        .literal(Term(name: "function", arguments: [.variable(B), .variable(C)])),
+                        .literal(Term(name: "function", arguments: [
+                            .literal(Term(name: "function", arguments: [.variable(A), .variable(B)])),
+                            .literal(Term(name: "function", arguments: [.variable(A), .variable(C)]))
                         ]))
                     ]))
                 ])
             )},
             Clause { Sqrt, Square, Abs in (
-                rule: Term(name: "binding", arguments: [.Literal(Term(atom: "abs")), .Variable(Abs)]),
+                rule: Term(name: "binding", arguments: [.literal(Term(atom: "abs")), .variable(Abs)]),
                 conditions: [
-                    Term(name: "binding", arguments: [.Literal(Term(atom: "sqrt")), .Variable(Sqrt)]),
-                    Term(name: "binding", arguments: [.Literal(Term(atom: "square")), .Variable(Square)]),
-                    Term(name: "binding", arguments: [.Literal(Term(atom: "compose")), .Literal(Term(name: "function", arguments: [
-                        .Variable(Sqrt), .Literal(Term(name: "function", arguments: [
-                            .Variable(Square),
-                            .Variable(Abs)
+                    Term(name: "binding", arguments: [.literal(Term(atom: "sqrt")), .variable(Sqrt)]),
+                    Term(name: "binding", arguments: [.literal(Term(atom: "square")), .variable(Square)]),
+                    Term(name: "binding", arguments: [.literal(Term(atom: "compose")), .literal(Term(name: "function", arguments: [
+                        .variable(Sqrt), .literal(Term(name: "function", arguments: [
+                            .variable(Square),
+                            .variable(Abs)
                         ]))
                     ]))])
                 ])
@@ -248,9 +248,9 @@ class SystemTests: XCTestCase {
         
         let Abs = Binding<Term<String>>()
         var count = 0
-        _ = try? system.enumerateMatches(Term(name: "binding", arguments: [.Literal(Term(atom: "abs")), .Variable(Abs)])) {
-            count++
-            XCTAssertEqual(Term(name: "function", arguments: [.Literal(Term(atom: "Int")), .Literal(Term(atom: "Int"))]), Abs.value)
+        _ = try? system.enumerateMatches(Term(name: "binding", arguments: [.literal(Term(atom: "abs")), .variable(Abs)])) {
+            count += 1
+            XCTAssertEqual(Term(name: "function", arguments: [.literal(Term(atom: "Int")), .literal(Term(atom: "Int"))]), Abs.value)
         }
         XCTAssertEqual(1, count)
     }

@@ -13,31 +13,31 @@ import XCTest
 class ClauseTests: XCTestCase {
     func testCopy() {
         let a = Clause { binding in (
-            rule: Term<Int>(name: 100, arguments: [.Variable(binding)]),
-            conditions: [Term<Int>(name: 200, arguments: [.Variable(binding)])]
+            rule: Term<Int>(name: 100, arguments: [.variable(binding)]),
+            conditions: [Term<Int>(name: 200, arguments: [.variable(binding)])]
         )}
 
         let context = CopyContext()
         let b = Clause.copy(a, withContext: context)
         
-        guard case let Unifiable.Variable(bindingA) = b.head.arguments.first! else { fatalError() }
-        guard case let Unifiable.Variable(bindingB) = b.body.first!.arguments.first! else { fatalError() }
+        guard case let Unifiable.variable(bindingA) = b.head.arguments.first! else { fatalError() }
+        guard case let Unifiable.variable(bindingB) = b.body.first!.arguments.first! else { fatalError() }
         XCTAssertTrue(bindingA.glue === bindingB.glue)
     }
     
     func testNestedCopy() {
         let a = Clause { binding in (
-            rule: Term<Int>(name: 100, arguments: [.Variable(binding)]),
+            rule: Term<Int>(name: 100, arguments: [.variable(binding)]),
             conditions: [Term<Int>(name: 200, arguments: [
-                    .Literal(Term(name: 300, arguments: [.Variable(binding)]))
+                    .literal(Term(name: 300, arguments: [.variable(binding)]))
                 ])]
             )}
         
         let context = CopyContext()
         let b = Clause.copy(a, withContext: context)
         
-        guard case let Unifiable.Variable(bindingA) = b.head.arguments.first! else { fatalError() }
-        guard case let Unifiable.Variable(bindingB) = b.body.first!.arguments.first!.value!.arguments.first! else { fatalError() }
+        guard case let Unifiable.variable(bindingA) = b.head.arguments.first! else { fatalError() }
+        guard case let Unifiable.variable(bindingB) = b.body.first!.arguments.first!.value!.arguments.first! else { fatalError() }
         XCTAssertTrue(bindingA.glue === bindingB.glue)
     }
 }
