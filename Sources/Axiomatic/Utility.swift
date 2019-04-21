@@ -6,9 +6,9 @@
 //  Copyright © 2016 Jaden Geller. All rights reserved.
 //
 
-extension SequenceType {
-    internal func groupBy<Group: Hashable>(group: Generator.Element -> Group) -> [Group : [Generator.Element]] {
-        var result: [Group : [Generator.Element]] = [:]
+extension Sequence {
+    internal func groupBy<Group: Hashable>(group: (Element) -> Group) -> [Group : [Element]] {
+        var result: [Group : [Element]] = [:]
         forEach { element in
             result[group(element)] = (result[group(element)] ?? []) + [element]
         }
