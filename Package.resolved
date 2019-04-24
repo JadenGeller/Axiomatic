@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Gluey",
+        "repositoryURL": "https://github.com/MaxDesiatov/Gluey.git",
+        "state": {
+          "branch": "master",
+          "revision": "cc65d74319966ef3eb75e2c4d90e41c80010307c",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

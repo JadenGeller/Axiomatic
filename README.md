@@ -97,7 +97,7 @@ let system = System(clauses: [
     // grandparent(A, B) :- parent(A, X), parent(X, B).
     Clause{ A, B, X in (
         rule: Term(name: "grandparent", arguments: [.Variable(A), .Variable(B)]),
-        requirements: [
+        conditions: [
             Term(name: "parent", arguments: [.Variable(A), .Variable(X)]),
             Term(name: "parent", arguments: [.Variable(X), .Variable(B)])
         ]

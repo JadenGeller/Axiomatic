@@ -23,13 +23,14 @@ public struct Functor<Atom: Hashable> {
 }
 
 extension Functor: Hashable {
-    /// The hash value.
-    public var hashValue: Int {
-        return name.hashValue ^ arity.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(arity)
     }
 }
 
-/// Returns `true` if `lhs` has the same name and arity as `rhs`.
-public func ==<Atom: Hashable>(lhs: Functor<Atom>, rhs: Functor<Atom>) -> Bool {
-    return lhs.name == rhs.name && lhs.arity == rhs.arity
+extension Functor: Equatable {
+    public static func ==(lhs: Functor<Atom>, rhs: Functor<Atom>) -> Bool {
+        return lhs.name == rhs.name && lhs.arity == rhs.arity
+    }
 }

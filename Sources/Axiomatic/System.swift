@@ -37,20 +37,19 @@ public enum SystemException: Error {
 extension System {
   /// Attempts to unify each term in `goals` with the known clauses in the system, calling `onMatch` each
   /// time it succeeds to simultaneously unify all `goals`.
-  public func enumerateMatches(goals: [Term<Atom>], onMatch: @escaping () throws -> ()) throws {
+  public func enumerateMatches(_ goals: [Term<Atom>], onMatch: @escaping () throws -> ()) throws {
     // Reverse first since reduce is right-to-left
-    let satisfyAll = goals.reversed().reduce(onMatch) { lambda, predicate in { try self.enumerateMatches(goal: predicate, onMatch: lambda) } }
+    let satisfyAll = goals.reversed().reduce(onMatch) { lambda, predicate in { try self.enumerateMatches(predicate, onMatch: lambda) } }
     try satisfyAll()
   }
 
   /// Attempts to unify `goal` with the known clauses in the system calling `onMatch` each time it succeeds to unify.
-  public func enumerateMatches(goal: Term<Atom>, onMatch: @escaping () throws -> ()) throws {
-    #if TRACE
-    print("GOAL: \(goal)")
-    #endif
+  public func enumerateMatches(_ goal: Term<Atom>, onMatch: @escaping () throws -> ()) throws {
+    var hasUnified = false
     // Enumerate all potential matches
     for clause in uniqueClauses(functor: goal.functor) {
       #if TRACE
+      print("GOAL: \(goal)")
       print("ATTEMPT: \(clause)")
       #endif
       do {
@@ -61,13 +60,14 @@ extension System {
           print("CALL: \(clause.head)")
           #endif
           // If we're able to unify the head, attempt to unify the entire body
-          try self.enumerateMatches(goals: clause.body) {
+          try self.enumerateMatches(clause.body) {
             #if TRACE
             print("SUCCESS: \(clause.head)")
             #endif
 
             // We've unfied a clause, so let's report it!
             try onMatch()
+            hasUnified = true
             throw SystemException.Continue
           }
         }
@@ -75,7 +75,6 @@ extension System {
         #if TRACE
         print("DONE")
         #endif
-        return
       } catch let exception as SystemException {
         switch exception {
         case .Break:
@@ -97,6 +96,10 @@ extension System {
         #endif
         continue
       }
+    }
+
+    guard hasUnified else {
+      throw UnificationError("No unification happened")
     }
   }
 }

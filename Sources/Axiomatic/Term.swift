@@ -47,13 +47,14 @@ extension Term: CustomStringConvertible {
   }
 }
 
-extension Term: Equatable {}
-/// Returns `true` if `lhs` and `rhs` have the same name and the same arguments. Note that the arguments are the same
-/// if they have the same value or if they are bound together.
-public func == <Atom: Hashable>(lhs: Term<Atom>, rhs: Term<Atom>) -> Bool {
-  return lhs.name == rhs.name && lhs.arity == rhs.arity && zip(lhs.arguments, rhs.arguments).reduce(true) { result, pair in
-    result && pair.0 == pair.1
-  }
+extension Term: Equatable {
+    /// Returns `true` if `lhs` and `rhs` have the same name and the same arguments. Note that the arguments are the same
+    /// if they have the same value or if they are bound together.
+    public static func ==(lhs: Term<Atom>, rhs: Term<Atom>) -> Bool {
+        return lhs.name == rhs.name && lhs.arity == rhs.arity && zip(lhs.arguments, rhs.arguments).reduce(true) { result, pair in
+            result && pair.0 == pair.1
+        }
+    }
 }
 
 extension Term: UnifiableType {

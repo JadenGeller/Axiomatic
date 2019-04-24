@@ -7,7 +7,7 @@
 //
 
 extension Sequence {
-    internal func groupBy<Group: Hashable>(group: (Element) -> Group) -> [Group : [Element]] {
+    func groupBy<Group: Hashable>(group: (Element) -> Group) -> [Group : [Element]] {
         var result: [Group : [Element]] = [:]
         forEach { element in
             result[group(element)] = (result[group(element)] ?? []) + [element]

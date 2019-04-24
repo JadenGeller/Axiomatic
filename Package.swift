@@ -17,5 +17,9 @@ let package = Package(
       name: "Axiomatic",
       dependencies: ["Gluey"]
     ),
+    .testTarget(
+      name: "AxiomaticTests",
+      dependencies: ["Axiomatic"]
+    ),
   ]
 )
