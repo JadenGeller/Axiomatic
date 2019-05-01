@@ -36,9 +36,9 @@ class SystemTests: XCTestCase {
         var count = 0
         // swift(uncool).
         XCTAssertThrowsError(
-          try system.enumerateMatches(Term(name: "swift", arguments: [.literal(Term(atom: "uncool"))])) {
-            count += 1
-          }
+            try system.enumerateMatches(Term(name: "swift", arguments: [.literal(Term(atom: "uncool"))])) {
+                count += 1
+            }
         )
     }
 
