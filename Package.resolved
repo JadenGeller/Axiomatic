@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "Gluey",
-        "repositoryURL": "https://github.com/MaxDesiatov/Gluey.git",
+        "repositoryURL": "https://github.com/JadenGeller/Gluey.git",
         "state": {
           "branch": "master",
-          "revision": "cc65d74319966ef3eb75e2c4d90e41c80010307c",
+          "revision": "c4912cafda002810fa301ae9dd5e888327451dc8",
           "version": null
         }
       }

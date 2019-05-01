@@ -14,7 +14,7 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/MaxDesiatov/Gluey.git", .branch("master")),
+    .package(url: "https://github.com/JadenGeller/Gluey.git", .branch("master")),
   ],
   targets: [
     // Targets are the basic building blocks of a package. A target can define
