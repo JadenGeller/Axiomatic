@@ -15,7 +15,7 @@ import Gluey
 public struct Clause<Atom: Hashable> {
     /// The term that is true conditional on all terms of the `body` being true.
     public var head: Term<Atom>
-    
+
     /// The collection of terms that all must be true in order for `head` to be true.
     public var body: [Term<Atom>]
 
@@ -30,7 +30,7 @@ extension Clause {
     public init(fact: Term<Atom>) {
         self.init(head: fact, body: [])
     }
-    
+
     /// Constructs a `Clause` that defines a rule that is true given some set of `conditions`.
     public init(rule: Term<Atom>, conditions: [Term<Atom>]) {
         self.init(head: rule, body: conditions)
@@ -41,7 +41,7 @@ extension Clause: CustomStringConvertible {
     /// A textual description of `self`.
     public var description: String {
         guard body.count > 0 else { return head.description + "." }
-        return head.description + " :- " + body.map{ String($0) }.joinWithSeparator(", ") + "."
+        return head.description + " :- " + body.map { String(describing: $0) }.joined(separator: ", ") + "."
     }
 }
 
@@ -54,42 +54,42 @@ extension Clause {
         let (rule, conditions) = build()
         self.init(rule: rule, conditions: conditions)
     }
-    
+
     /// Constructs a `Clause` that defines a rule that is true given some set of `conditions`
     /// using the `build` closure that provides 1 unused bindings.
-    public init(build: Binding<Term<Atom>> -> (rule: Term<Atom>, conditions: [Term<Atom>])) {
+    public init(build: (Binding<Term<Atom>>) -> (rule: Term<Atom>, conditions: [Term<Atom>])) {
         let (rule, conditions) = build(Binding())
         self.init(rule: rule, conditions: conditions)
     }
-    
+
     /// Constructs a `Clause` that defines a rule that is true given some set of `conditions`
     /// using the `build` closure that provides 2 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>) -> (rule: Term<Atom>, conditions: [Term<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding())
         self.init(rule: rule, conditions: conditions)
     }
-    
+
     /// Constructs a `Clause` that defines a rule that is true given some set of `conditions`
     /// using the `build` closure that provides 3 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> (rule: Term<Atom>, conditions: [Term<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding(), Binding())
         self.init(rule: rule, conditions: conditions)
     }
-    
+
     /// Constructs a `Clause` that defines a rule that is true given some set of `conditions`
     /// using the `build` closure that provides 4 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> (rule: Term<Atom>, conditions: [Term<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding(), Binding(), Binding())
         self.init(rule: rule, conditions: conditions)
     }
-    
+
     /// Constructs a `Clause` that defines a rule that is true given some set of `conditions`
     /// using the `build` closure that provides 5 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> (rule: Term<Atom>, conditions: [Term<Atom>])) {
         let (rule, conditions) = build(Binding(), Binding(), Binding(), Binding(), Binding())
         self.init(rule: rule, conditions: conditions)
     }
-    
+
     /// Constructs a `Clause` that defines a rule that is true given some set of `conditions`
     /// using the `build` closure that provides 6 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> (rule: Term<Atom>, conditions: [Term<Atom>])) {
@@ -103,32 +103,32 @@ extension Clause {
     public init(build: () -> Term<Atom>) {
         self.init(fact: build())
     }
-    
+
     /// Constructs a `Clause` that defines a fact using the `build` closure that provides 1 unused bindings.
-    public init(build: Binding<Term<Atom>> -> Term<Atom>) {
+    public init(build: (Binding<Term<Atom>>) -> Term<Atom>) {
         self.init(fact: build(Binding()))
     }
-    
+
     /// Constructs a `Clause` that defines a fact using the `build` closure that provides 2 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
         self.init(fact: build(Binding(), Binding()))
     }
-    
+
     /// Constructs a `Clause` that defines a fact using the `build` closure that provides 3 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
         self.init(fact: build(Binding(), Binding(), Binding()))
     }
-    
+
     /// Constructs a `Clause` that defines a fact using the `build` closure that provides 4 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
         self.init(fact: build(Binding(), Binding(), Binding(), Binding()))
     }
-    
+
     /// Constructs a `Clause` that defines a fact using the `build` closure that provides 5 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
         self.init(fact: build(Binding(), Binding(), Binding(), Binding(), Binding()))
     }
-    
+
     /// Constructs a `Clause` that defines a fact using the `build` closure that provides 6 unused bindings.
     public init(build: (Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>, Binding<Term<Atom>>) -> Term<Atom>) {
         self.init(fact: build(Binding(), Binding(), Binding(), Binding(), Binding(), Binding()))
@@ -138,7 +138,7 @@ extension Clause {
 extension Clause: ContextCopyable {
     /// Copies `this` reusing any substructure that has already been copied within
     /// this context, and storing any newly generated substructure into the context.
-    public static func copy(this: Clause, withContext context: CopyContext) -> Clause {
-        return Clause(head: Term.copy(this.head, withContext: context), body: this.body.map{ Term.copy($0, withContext: context) })
+    public static func copy(_ this: Clause, withContext context: CopyContext) -> Clause {
+        return Clause(head: Term.copy(this.head, withContext: context), body: this.body.map { Term.copy($0, withContext: context) })
     }
 }

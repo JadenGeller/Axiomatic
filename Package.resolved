@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Gluey",
+        "repositoryURL": "https://github.com/JadenGeller/Gluey.git",
+        "state": {
+          "branch": "master",
+          "revision": "c4912cafda002810fa301ae9dd5e888327451dc8",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
